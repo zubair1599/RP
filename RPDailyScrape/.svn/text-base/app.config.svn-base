@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <section name="log4net" type="System.Configuration.IgnoreSectionHandler"/>
+  </configSections>
+
+  <connectionStrings>
+    <add name="ScrapeRP" connectionString="Data Source=JSDELL2;Initial Catalog=RacingPostRaces;Persist Security Info=True;User ID=sa;Password=cosmos;MultipleActiveResultSets=True"
+      providerName="System.Data.SqlClient" />
+    <add name="RPDailyScrape.Properties.Settings.RacingPostRacesConnectionString"
+      connectionString="Data Source=78.109.165.240,1334;Initial Catalog=RacingPostRaces;Persist Security Info=True;User ID=sa;Password=w0wrq6q-qew"
+      providerName="System.Data.SqlClient" />
+    <add name="RPDailyScrape.Properties.Settings.RacingPostRacesConnectionString1"
+      connectionString="Data Source=jsdell2;Initial Catalog=RacingPostRaces;Integrated Security=True"
+      providerName="System.Data.SqlClient" />
+  </connectionStrings>
+
+  <log4net>
+    <root>
+      <level value="ALL"/>
+      <appender-ref ref="RollingFileAppender"/>
+      <appender-ref ref="ConsoleAppender"/>
+    </root>
+
+    <appender name="RollingFileAppender" type="log4net.Appender.RollingFileAppender">
+      <file value="C:\SportradarFeeds\RPScrapeLogs\log.txt"/>
+      <appendToFile value="true"/>
+      <rollingStyle value="Date"/>
+      <maxSizeRollBackups value="14"/>
+      <maximumFileSize value="15000KB"/>
+      <datePattern value="yyyyMMdd'.txt'"/>
+      <staticLogFileName value="true"/>
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date{dd-MM-yyyy HH:mm:ss} - %message%newline"/>
+      </layout>
+    </appender>
+
+    <appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender">
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date{dd-MM-yyyy HH:mm:ss} - %message%newline"/>
+      </layout>
+    </appender>
+  </log4net>
+</configuration>

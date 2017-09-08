@@ -1,0 +1,2889 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RacingPostRacesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActiveJockeys">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JockeyID" Type="int" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" />
+          <Property Name="County" Type="varchar" MaxLength="50" />
+          <Property Name="Postcode" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="LicenseType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fname" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ActiveTrainers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrainerID" Type="int" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" />
+          <Property Name="County" Type="varchar" MaxLength="50" />
+          <Property Name="Postcode" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="LicenseType" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AgeOfRace">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Age" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RaceType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BH_Sale">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="SaleHipType" Type="nvarchar(max)" />
+          <Property Name="NameSexYOB" Type="nvarchar(max)" />
+          <Property Name="Pedigree" Type="nvarchar(max)" />
+          <Property Name="Cover" Type="nvarchar(max)" />
+          <Property Name="Buyer" Type="nvarchar(max)" />
+          <Property Name="Consignor" Type="nvarchar(max)" />
+          <Property Name="Price" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nvarchar(max)" />
+          <Property Name="Processed" Type="int" />
+          <Property Name="Sale" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hip" Type="nvarchar" MaxLength="50" />
+          <Property Name="SaleType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Horse" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+          <Property Name="FoalYear" Type="int" />
+          <Property Name="Sire" Type="nvarchar" MaxLength="255" />
+          <Property Name="Dam" Type="nvarchar" MaxLength="255" />
+          <Property Name="DamSire" Type="nvarchar" MaxLength="255" />
+          <Property Name="PriceUSD" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RacingPostRaces.dbo.Class' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="class" />
+          </Key>
+          <Property Name="class" Type="int" Nullable="false" />
+          <Property Name="PreviousClass" Type="int" />
+          <Property Name="NextClass" Type="int" />
+        </EntityType>
+        <EntityType Name="ClassGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Class" Type="int" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="Raw" Type="nvarchar" MaxLength="255" />
+          <Property Name="PAId" Type="int" />
+          <Property Name="TrackTypeID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RacingPostRaces.dbo.Going' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Going">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Brief" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="450" />
+          <Property Name="GroupId" Type="int" />
+          <Property Name="ShortBrief" Type="varchar" MaxLength="10" />
+          <Property Name="NextGoingGroupID" Type="int" />
+          <Property Name="PrevGoingGroupID" Type="int" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassGroup" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Horse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RPId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="FlatName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="FoalDate" Type="datetime" />
+          <Property Name="FoalYear" Type="int" />
+          <Property Name="PedigreeRaw" Type="nvarchar(max)" />
+          <Property Name="PedigreeProcessed" Type="int" />
+          <Property Name="DetailRaw" Type="nvarchar(max)" />
+          <Property Name="DetailProcessed" Type="int" />
+          <Property Name="Colour" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+          <Property Name="SireId" Type="int" />
+          <Property Name="DamId" Type="int" />
+          <Property Name="GroupWinner" Type="bit" />
+          <Property Name="StakesWinner" Type="bit" />
+          <Property Name="PPId" Type="int" />
+          <Property Name="PPMatchBasis" Type="nvarchar" MaxLength="255" />
+          <Property Name="PQId" Type="nvarchar" MaxLength="255" />
+          <Property Name="PQMatchBasis" Type="nvarchar" MaxLength="255" />
+          <Property Name="PQOutcome" Type="nvarchar" MaxLength="255" />
+          <Property Name="Backfill" Type="nvarchar" MaxLength="255" />
+          <Property Name="Haplo" Type="nvarchar" MaxLength="50" />
+          <Property Name="PPRaceInfo" Type="nvarchar" MaxLength="50" />
+          <Property Name="PriorityProcess" Type="bit" Nullable="false" />
+          <Property Name="LaterProcess" Type="bit" Nullable="false" />
+          <Property Name="flatname1" Type="nvarchar" MaxLength="50" />
+          <Property Name="flatsire" Type="nvarchar" MaxLength="50" />
+          <Property Name="flatdam" Type="nvarchar" MaxLength="50" />
+          <Property Name="belid" Type="int" />
+          <Property Name="PostTemplate" Type="bit" />
+          <Property Name="Breeder" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Horse_Merged">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RHId" Type="int" />
+          <Property Name="PPId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="PPName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PPFlatName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="FoalDate" Type="datetime" />
+          <Property Name="FoalYear" Type="int" />
+          <Property Name="Colour" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+          <Property Name="SireId" Type="int" />
+          <Property Name="DamId" Type="int" />
+          <Property Name="GroupWinner" Type="bit" />
+          <Property Name="StakesWinner" Type="bit" />
+          <Property Name="Haplo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShortRaceInfo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MergeBasis" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RacingPostRaces.dbo.HorseRacingAnalysis' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HorseRacingAnalysis">
+          <Key>
+            <PropertyRef Name="RaceID" />
+            <PropertyRef Name="Furlongs" />
+            <PropertyRef Name="RunnerID" />
+            <PropertyRef Name="RatingOfWinner" />
+            <PropertyRef Name="RatingOfLastRun" />
+            <PropertyRef Name="RatingOfLastWin" />
+            <PropertyRef Name="ClassPrevious" />
+            <PropertyRef Name="ClassNext" />
+            <PropertyRef Name="distancePrevious" />
+            <PropertyRef Name="distanceNext" />
+            <PropertyRef Name="Maiden" />
+            <PropertyRef Name="Winner_On_Same_Type_Track" />
+            <PropertyRef Name="Winner_On_Track" />
+            <PropertyRef Name="Winner_Same_Distance" />
+            <PropertyRef Name="Winner_Same_Going" />
+            <PropertyRef Name="Winner_Same_Class" />
+            <PropertyRef Name="within 2.5% of top weight" />
+            <PropertyRef Name="Winner_AnyTime" />
+            <PropertyRef Name="WinnerLastRace" />
+            <PropertyRef Name="WinnerInPrevious3Races" />
+            <PropertyRef Name="WinnerInPrevious5Races" />
+            <PropertyRef Name="Winner_Previous_Distance" />
+            <PropertyRef Name="Winner_Next_Distance" />
+            <PropertyRef Name="Winner_Previous_Going" />
+            <PropertyRef Name="Winner_Next_Going" />
+            <PropertyRef Name="Winner_Previous_Class" />
+            <PropertyRef Name="Winner_Next_Class" />
+            <PropertyRef Name="OddsFavoriteValue" />
+            <PropertyRef Name="AnyRacewith4orlessrunners-WinneronlyPlaced" />
+            <PropertyRef Name="AnyRacewith5,6or7runners-2placesPlaced" />
+            <PropertyRef Name="AnyNonHandiCapWith8orMoreRunners-3PlacesPlaced" />
+            <PropertyRef Name="HandicapsWith8-15Runners-3PlacesPlaced" />
+            <PropertyRef Name="HandicapsWith16OrMoreRunners-4PlacesPlaced" />
+            <PropertyRef Name="IsTopWeight" />
+            <PropertyRef Name="IsBottomweight" />
+            <PropertyRef Name="Count 2.5% of top weight" />
+            <PropertyRef Name="Count 5% of top weight" />
+            <PropertyRef Name="Count 2.5% of Bottom weight" />
+            <PropertyRef Name="Count 5% of Bottom weight" />
+            <PropertyRef Name="Count Other - Weight" />
+            <PropertyRef Name="Count-ImprovedRatingSinceLastRun" />
+            <PropertyRef Name="Count-LowerRatingSinceLastRun" />
+            <PropertyRef Name="Count-ImprovedRatingSinceLastWin" />
+            <PropertyRef Name="Count-LowerRatingSinceLastWin" />
+            <PropertyRef Name="Favorite" />
+            <PropertyRef Name="SecondFavoriteValue2" />
+            <PropertyRef Name="Odd_Is_2nd_Favorite" />
+            <PropertyRef Name="Odds On" />
+            <PropertyRef Name="Evens - 2/1" />
+            <PropertyRef Name="&gt;2/1 - 5/1" />
+            <PropertyRef Name="&gt;5/1 - 10/1" />
+            <PropertyRef Name="&gt;10/1 - 20/1" />
+            <PropertyRef Name="&gt;20 / 1" />
+            <PropertyRef Name="PlacedInPreviousRace" />
+            <PropertyRef Name="PlacedInPrevious3Races" />
+            <PropertyRef Name="PlacedInPrevious5Races" />
+            <PropertyRef Name="UnPlacedInAllRaces" />
+            <PropertyRef Name="NoRunsInSeason" />
+            <PropertyRef Name="Winner distance +/-1-OR" />
+            <PropertyRef Name="Winner Going +/-1-And" />
+            <PropertyRef Name="Winner Class +/-1-And" />
+            <PropertyRef Name="Within Last 7 Days" />
+            <PropertyRef Name="8-14 Days" />
+            <PropertyRef Name="15 Days - 28 Days" />
+            <PropertyRef Name="1Month- 3months" />
+            <PropertyRef Name="3 Months" />
+            <PropertyRef Name="Win Within Last 7 Days" />
+            <PropertyRef Name="Win 8-14 Days" />
+            <PropertyRef Name="Win 15 Days - 28 Days" />
+            <PropertyRef Name="Win 1Month- 3months" />
+            <PropertyRef Name="Win 3 Months" />
+            <PropertyRef Name="WinnerLastRaceaANDWinnerSameGoing" />
+            <PropertyRef Name="WinnerLastRaceaANDWinnerSameDistance" />
+            <PropertyRef Name="WinnerLastRaceaANDWinnerSameClass" />
+            <PropertyRef Name="WinLastRaceANDWinSameGoingAndWinSameDistance" />
+            <PropertyRef Name="WinLastRaceAndSameGoingAndSameDistanceAndSameClass" />
+            <PropertyRef Name="WinLastRaceaANDImprovedRatingSinceLastRun" />
+            <PropertyRef Name="WinLastRaceANDImprovedRatingSinceLastRunAndSameTypeTrack" />
+            <PropertyRef Name="WinLastRaceANDImprovedRatingSinceLastRunAndWinnerSameGoing" />
+            <PropertyRef Name="WinLastRaceANDTopweight" />
+            <PropertyRef Name="Win8_14daysAndWinnerOnTrack" />
+            <PropertyRef Name="WinLastRaceANDFavorite" />
+            <PropertyRef Name="WinnerSeason_Hurdle" />
+            <PropertyRef Name="WinnerSeason_Chase" />
+            <PropertyRef Name="WinnerSeason_AllWeatherFlat" />
+            <PropertyRef Name="WinnerSeason_Flat" />
+            <PropertyRef Name="WinnerSeason_Jump" />
+            <PropertyRef Name="WinnerSeason_NationalHuntFlat" />
+            <PropertyRef Name="WinnerSeason_HuntersChase" />
+          </Key>
+          <Property Name="RaceID" Type="int" Nullable="false" />
+          <Property Name="MeetingId" Type="int" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="RaceName" Type="nvarchar" MaxLength="255" />
+          <Property Name="RaceType" Type="int" />
+          <Property Name="Handicap" Type="bit" />
+          <Property Name="Chase" Type="bit" />
+          <Property Name="Hurdle" Type="bit" />
+          <Property Name="NHFlat" Type="bit" />
+          <Property Name="Class" Type="int" />
+          <Property Name="GradeGroup" Type="nvarchar" MaxLength="50" />
+          <Property Name="RaceRating" Type="nvarchar" MaxLength="50" />
+          <Property Name="Eligibility" Type="nvarchar" MaxLength="50" />
+          <Property Name="TrackDirection" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistanceYards" Type="int" />
+          <Property Name="Distance" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistanceStd" Type="nvarchar" MaxLength="50" />
+          <Property Name="Furlongs" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Going" Type="nvarchar" MaxLength="50" />
+          <Property Name="FencesHurdles" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fences" Type="int" />
+          <Property Name="FencesOmitted" Type="int" />
+          <Property Name="Runners" Type="int" />
+          <Property Name="RaceTime" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeSeconds" Type="float" />
+          <Property Name="CourseID" Type="int" />
+          <Property Name="RunnerID" Type="int" Nullable="false" />
+          <Property Name="HorseId" Type="int" />
+          <Property Name="Position" Type="int" />
+          <Property Name="Placed" Type="int" />
+          <Property Name="DidNotFinish" Type="nvarchar" MaxLength="50" />
+          <Property Name="Disqualified" Type="bit" />
+          <Property Name="Draw" Type="int" />
+          <Property Name="RunnerDistance" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="nvarchar" MaxLength="50" />
+          <Property Name="PriceProcessed" Type="bit" />
+          <Property Name="Numerator" Type="int" />
+          <Property Name="Denominator" Type="int" />
+          <Property Name="Favourite" Type="bit" />
+          <Property Name="WeightProcessed" Type="int" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="Weight_OW" Type="int" />
+          <Property Name="Weight_OH" Type="int" />
+          <Property Name="Weight_EW" Type="int" />
+          <Property Name="Weight_Desc" Type="nvarchar" MaxLength="50" />
+          <Property Name="TrainerId" Type="int" />
+          <Property Name="JockeyId" Type="int" />
+          <Property Name="RunnerAllowance" Type="int" />
+          <Property Name="OR_Rating" Type="nvarchar" MaxLength="50" />
+          <Property Name="TS_Rating" Type="nvarchar" MaxLength="50" />
+          <Property Name="RPR_Rating" Type="nvarchar" MaxLength="50" />
+          <Property Name="rating" Type="int" />
+          <Property Name="Age" Type="int" />
+          <Property Name="HorseRaceSequence" Type="int" />
+          <Property Name="HorseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FlatName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="FoalDate" Type="datetime" />
+          <Property Name="FoalYear" Type="int" />
+          <Property Name="Colour" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+          <Property Name="GoingID" Type="int" />
+          <Property Name="GoingGroupID" Type="int" />
+          <Property Name="NextGoingGroupID" Type="int" />
+          <Property Name="PrevGoingGroupID" Type="int" />
+          <Property Name="RatingOfWinner" Type="int" Nullable="false" />
+          <Property Name="RatingOfLastRun" Type="int" Nullable="false" />
+          <Property Name="RatingOfLastWin" Type="int" Nullable="false" />
+          <Property Name="ClassPrevious" Type="int" Nullable="false" />
+          <Property Name="ClassNext" Type="int" Nullable="false" />
+          <Property Name="distancePrevious" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="distanceNext" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Maiden" Type="int" Nullable="false" />
+          <Property Name="Winner_On_Same_Type_Track" Type="int" Nullable="false" />
+          <Property Name="Winner_On_Track" Type="int" Nullable="false" />
+          <Property Name="Winner_Same_Distance" Type="int" Nullable="false" />
+          <Property Name="Winner_Same_Going" Type="int" Nullable="false" />
+          <Property Name="Winner_Same_Class" Type="int" Nullable="false" />
+          <Property Name="Topweight" Type="int" />
+          <Property Name="2.5% of top weight" Type="numeric" Precision="15" Scale="3" />
+          <Property Name="within 2.5% of top weight" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Within 5% top weight" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="Within 5% of bottom Weight" Type="numeric" Precision="14" Scale="2" />
+          <Property Name="within 2.5% bottom Weight" Type="numeric" Precision="15" Scale="3" />
+          <Property Name="Bottom Weight" Type="int" />
+          <Property Name="PriceDecimal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TrackTypeID" Type="int" />
+          <Property Name="Winner_AnyTime" Type="int" Nullable="false" />
+          <Property Name="DateOfLastRace" Type="datetime" />
+          <Property Name="DateOfLastWinRace" Type="datetime" />
+          <Property Name="DateOfLastRaceDateDifference" Type="int" />
+          <Property Name="DateOfLastWinRaceDateDifference" Type="int" />
+          <Property Name="WinnerLastRace" Type="int" Nullable="false" />
+          <Property Name="WinnerInPrevious3Races" Type="int" Nullable="false" />
+          <Property Name="WinnerInPrevious5Races" Type="int" Nullable="false" />
+          <Property Name="Winner_Previous_Distance" Type="int" Nullable="false" />
+          <Property Name="Winner_Next_Distance" Type="int" Nullable="false" />
+          <Property Name="Winner_Previous_Going" Type="int" Nullable="false" />
+          <Property Name="Winner_Next_Going" Type="int" Nullable="false" />
+          <Property Name="Winner_Previous_Class" Type="int" Nullable="false" />
+          <Property Name="Winner_Next_Class" Type="int" Nullable="false" />
+          <Property Name="OddsFavoriteValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="AnyRacewith4orlessrunners-WinneronlyPlaced" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="AnyRacewith5,6or7runners-2placesPlaced" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="AnyNonHandiCapWith8orMoreRunners-3PlacesPlaced" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="HandicapsWith8-15Runners-3PlacesPlaced" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="HandicapsWith16OrMoreRunners-4PlacesPlaced" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="PlacedInRace" Type="int" />
+          <Property Name="IsTopWeight" Type="int" Nullable="false" />
+          <Property Name="IsBottomweight" Type="int" Nullable="false" />
+          <Property Name="Count 2.5% of top weight" Type="int" Nullable="false" />
+          <Property Name="Count 5% of top weight" Type="int" Nullable="false" />
+          <Property Name="Count 2.5% of Bottom weight" Type="int" Nullable="false" />
+          <Property Name="Count 5% of Bottom weight" Type="int" Nullable="false" />
+          <Property Name="Count Other - Weight" Type="int" Nullable="false" />
+          <Property Name="Count-ImprovedRatingSinceLastRun" Type="int" Nullable="false" />
+          <Property Name="Count-LowerRatingSinceLastRun" Type="int" Nullable="false" />
+          <Property Name="Count-ImprovedRatingSinceLastWin" Type="int" Nullable="false" />
+          <Property Name="Count-LowerRatingSinceLastWin" Type="int" Nullable="false" />
+          <Property Name="Favorite" Type="int" Nullable="false" />
+          <Property Name="SecondFavoriteValue2" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Odd_Is_2nd_Favorite" Type="int" Nullable="false" />
+          <Property Name="Odds On" Type="int" Nullable="false" />
+          <Property Name="Evens - 2/1" Type="int" Nullable="false" />
+          <Property Name="&gt;2/1 - 5/1" Type="int" Nullable="false" />
+          <Property Name="&gt;5/1 - 10/1" Type="int" Nullable="false" />
+          <Property Name="&gt;10/1 - 20/1" Type="int" Nullable="false" />
+          <Property Name="&gt;20 / 1" Type="int" Nullable="false" />
+          <Property Name="PlacedInPreviousRace" Type="int" Nullable="false" />
+          <Property Name="PlacedInPrevious3Races" Type="int" Nullable="false" />
+          <Property Name="PlacedInPrevious5Races" Type="int" Nullable="false" />
+          <Property Name="UnPlacedInAllRaces" Type="int" Nullable="false" />
+          <Property Name="NoRunsInCareer" Type="int" />
+          <Property Name="NoRunsInSeason" Type="int" Nullable="false" />
+          <Property Name="PP" Type="int" />
+          <Property Name="PIR" Type="int" />
+          <Property Name="Winner distance +/-1-OR" Type="int" Nullable="false" />
+          <Property Name="Winner Going +/-1-And" Type="int" Nullable="false" />
+          <Property Name="Winner Class +/-1-And" Type="int" Nullable="false" />
+          <Property Name="HorseAge" Type="int" />
+          <Property Name="Within Last 7 Days" Type="int" Nullable="false" />
+          <Property Name="8-14 Days" Type="int" Nullable="false" />
+          <Property Name="15 Days - 28 Days" Type="int" Nullable="false" />
+          <Property Name="1Month- 3months" Type="int" Nullable="false" />
+          <Property Name="3 Months" Type="int" Nullable="false" />
+          <Property Name="Win Within Last 7 Days" Type="int" Nullable="false" />
+          <Property Name="Win 8-14 Days" Type="int" Nullable="false" />
+          <Property Name="Win 15 Days - 28 Days" Type="int" Nullable="false" />
+          <Property Name="Win 1Month- 3months" Type="int" Nullable="false" />
+          <Property Name="Win 3 Months" Type="int" Nullable="false" />
+          <Property Name="WinnerLastRaceaANDWinnerSameGoing" Type="int" Nullable="false" />
+          <Property Name="WinnerLastRaceaANDWinnerSameDistance" Type="int" Nullable="false" />
+          <Property Name="WinnerLastRaceaANDWinnerSameClass" Type="int" Nullable="false" />
+          <Property Name="WinLastRaceANDWinSameGoingAndWinSameDistance" Type="int" Nullable="false" />
+          <Property Name="WinLastRaceAndSameGoingAndSameDistanceAndSameClass" Type="int" Nullable="false" />
+          <Property Name="WinLastRaceaANDImprovedRatingSinceLastRun" Type="int" Nullable="false" />
+          <Property Name="WinLastRaceANDImprovedRatingSinceLastRunAndSameTypeTrack" Type="int" Nullable="false" />
+          <Property Name="WinLastRaceANDImprovedRatingSinceLastRunAndWinnerSameGoing" Type="int" Nullable="false" />
+          <Property Name="WinLastRaceANDTopweight" Type="int" Nullable="false" />
+          <Property Name="Win8_14daysAndWinnerOnTrack" Type="int" Nullable="false" />
+          <Property Name="WinLastRaceANDFavorite" Type="int" Nullable="false" />
+          <Property Name="WinnerSeason_Hurdle" Type="int" Nullable="false" />
+          <Property Name="WinnerSeason_Chase" Type="int" Nullable="false" />
+          <Property Name="WinnerSeason_AllWeatherFlat" Type="int" Nullable="false" />
+          <Property Name="WinnerSeason_Flat" Type="int" Nullable="false" />
+          <Property Name="WinnerSeason_Jump" Type="int" Nullable="false" />
+          <Property Name="WinnerSeason_NationalHuntFlat" Type="int" Nullable="false" />
+          <Property Name="WinnerSeason_HuntersChase" Type="int" Nullable="false" />
+          <Property Name="newPrice" Type="decimal" Precision="19" Scale="2" />
+        </EntityType>
+        <EntityType Name="Jockey">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" />
+          <Property Name="Initial" Type="varchar" MaxLength="5" />
+          <Property Name="Firstname" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Meeting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="DateOfMeeting" Type="datetime" />
+          <Property Name="Going" Type="nvarchar" MaxLength="255" />
+          <Property Name="Weather" Type="nvarchar" MaxLength="255" />
+          <Property Name="Stalls" Type="nvarchar" MaxLength="255" />
+          <Property Name="RaceWithFences" Type="bit" />
+          <Property Name="PAId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RacingPostRaces.dbo.MissedMatchesPQ' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MissedMatchesPQ">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="FlatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="PQ_Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="PP_Country" Type="varchar" MaxLength="4" />
+          <Property Name="PQ_FoalYear" Type="int" />
+          <Property Name="PP_FoalYear" Type="int" />
+          <Property Name="PQ_SireId" Type="nvarchar" MaxLength="255" />
+          <Property Name="PP_Sire" Type="varchar" MaxLength="50" />
+          <Property Name="PQ_DamId" Type="nvarchar" MaxLength="255" />
+          <Property Name="PP_Dam" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RacingPostRaces.dbo.PA_Address' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PA_Address">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Town" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Town" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="varchar" MaxLength="100" />
+          <Property Name="Zip" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="PA_Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="AddressId" Type="int" />
+          <Property Name="TrackTypeId" Type="int" />
+        </EntityType>
+        <EntityType Name="PA_Meeting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="FeedId" Type="int" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="DrawnAdvantage" Type="varchar" MaxLength="450" />
+          <Property Name="AdvancedGoing" Type="varchar" MaxLength="450" />
+          <Property Name="Weather" Type="varchar" MaxLength="450" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RacingPostRaces.dbo.PA_Race' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PA_Race">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="450" />
+          <Property Name="ScheduledOffTime" Type="datetime" />
+          <Property Name="ActualOffTime" Type="datetime" />
+          <Property Name="PenaltyFundId" Type="int" />
+          <Property Name="AddedMoneyFundId" Type="int" />
+          <Property Name="Distance" Type="int" />
+          <Property Name="Weather" Type="varchar" MaxLength="50" />
+          <Property Name="Handicap" Type="bit" />
+          <Property Name="Trifecta" Type="bit" />
+          <Property Name="FeedId" Type="int" />
+          <Property Name="RaceTypeId" Type="int" />
+          <Property Name="Class" Type="varchar" MaxLength="50" />
+          <Property Name="MaxRunners" Type="int" />
+          <Property Name="ShowCase" Type="bit" />
+          <Property Name="Revision" Type="int" />
+          <Property Name="GoingId" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Eligibility" Type="varchar" MaxLength="50" />
+          <Property Name="LastWinnerId" Type="int" />
+          <Property Name="BetMarketId" Type="int" />
+          <Property Name="Message" Type="varchar" MaxLength="100" />
+          <Property Name="MeetingId" Type="int" />
+          <Property Name="WinTime" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="GoingDescription" Type="varchar" MaxLength="500" />
+          <Property Name="TrackDirectionId" Type="int" />
+          <Property Name="StandardTimeId" Type="int" />
+          <Property Name="GoingAllowance" Type="decimal" Precision="18" Scale="9" />
+          <Property Name="LastYearID" Type="int" />
+        </EntityType>
+        <EntityType Name="PA_TrackDirection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="25" />
+          <Property Name="Abbreviation" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="PP_Horse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="flatname" Type="varchar" MaxLength="50" />
+          <Property Name="dateofbirth" Type="datetime" />
+          <Property Name="familynumber" Type="varchar" MaxLength="5" />
+          <Property Name="yearofdeath" Type="datetime" />
+          <Property Name="countryoffoalingid" Type="varchar" MaxLength="4" />
+          <Property Name="colourid" Type="varchar" MaxLength="10" />
+          <Property Name="genderid" Type="varchar" MaxLength="2" />
+          <Property Name="shortraceinfoid" Type="varchar" MaxLength="5" />
+          <Property Name="noofstarts" Type="int" />
+          <Property Name="noofwins" Type="int" />
+          <Property Name="noof2nds" Type="int" />
+          <Property Name="noof3rds" Type="int" />
+          <Property Name="bestbhb" Type="int" />
+          <Property Name="bestform" Type="int" />
+          <Property Name="bestts" Type="int" />
+          <Property Name="mtdnahaplotype" Type="varchar" MaxLength="10" />
+          <Property Name="totalprizemoney" Type="varchar" MaxLength="8" />
+          <Property Name="winprizemoney" Type="varchar" MaxLength="8" />
+          <Property Name="trainerid" Type="int" />
+          <Property Name="ownerid" Type="int" />
+          <Property Name="breederid" Type="int" />
+          <Property Name="sireid" Type="int" />
+          <Property Name="damid" Type="int" />
+          <Property Name="comments" Type="varchar" MaxLength="1000" />
+          <Property Name="isactualdate" Type="bit" />
+          <Property Name="iscustom" Type="bit" />
+          <Property Name="lastcreatedby" Type="varchar" MaxLength="20" />
+          <Property Name="lastcreateddate" Type="datetime" />
+          <Property Name="lastmodifiedby" Type="varchar" MaxLength="20" />
+          <Property Name="lastmodifieddate" Type="datetime" />
+          <Property Name="ishypo" Type="bit" />
+          <Property Name="i" Type="bit" />
+          <Property Name="c" Type="bit" />
+          <Property Name="s" Type="bit" />
+          <Property Name="p" Type="bit" />
+          <Property Name="b" Type="bit" />
+          <Property Name="randseq" Type="int" />
+          <Property Name="hasraced" Type="bit" />
+          <Property Name="height" Type="int" />
+          <Property Name="heightunit" Type="varchar" MaxLength="20" />
+          <Property Name="birthweight" Type="int" />
+          <Property Name="birthweightunit" Type="varchar" MaxLength="20" />
+          <Property Name="ispedigreecomplete" Type="bit" />
+          <Property Name="salesid" Type="varchar" MaxLength="100" />
+          <Property Name="twin" Type="bit" />
+          <Property Name="pq_starts" Type="int" />
+          <Property Name="pq_wins" Type="int" />
+          <Property Name="pq_places" Type="int" />
+          <Property Name="pq_earnings" Type="nvarchar" MaxLength="255" />
+          <Property Name="pq_owner" Type="nvarchar" MaxLength="255" />
+          <Property Name="pq_breeder" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="PQ_Horse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="FlatName" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="FoalYear" Type="int" />
+          <Property Name="Colour" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+          <Property Name="SireId" Type="nvarchar" MaxLength="255" />
+          <Property Name="DamId" Type="nvarchar" MaxLength="255" />
+          <Property Name="Starts" Type="int" />
+          <Property Name="Wins" Type="int" />
+          <Property Name="Places" Type="int" />
+          <Property Name="Earnings" Type="nvarchar(max)" />
+          <Property Name="Owner" Type="nvarchar(max)" />
+          <Property Name="Breeder" Type="nvarchar(max)" />
+          <Property Name="SexRescrape" Type="bit" />
+          <Property Name="SexRescrape1" Type="bit" />
+          <Property Name="MergeId" Type="int" />
+          <Property Name="MergeMatchBasis" Type="nvarchar(max)" />
+          <Property Name="PQOutcome" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PQ_HorseTemp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="FlatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="FoalYear" Type="int" />
+          <Property Name="Colour" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+          <Property Name="SireId" Type="nvarchar" MaxLength="255" />
+          <Property Name="DamId" Type="nvarchar" MaxLength="255" />
+          <Property Name="Starts" Type="int" />
+          <Property Name="Wins" Type="int" />
+          <Property Name="Places" Type="int" />
+          <Property Name="Earnings" Type="nvarchar" MaxLength="255" />
+          <Property Name="Owner" Type="nvarchar" MaxLength="255" />
+          <Property Name="Breeder" Type="nvarchar" MaxLength="255" />
+          <Property Name="SexRescrape" Type="bit" />
+          <Property Name="SexRescrape1" Type="bit" />
+          <Property Name="MergeId" Type="int" />
+          <Property Name="MergeMatchBasis" Type="nvarchar" MaxLength="50" />
+          <Property Name="PQOutcome" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Race">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="MeetingId" Type="int" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="RaceType" Type="int" />
+          <Property Name="Season" Type="int" />
+          <Property Name="SeasonType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Handicap" Type="bit" />
+          <Property Name="Chase" Type="bit" />
+          <Property Name="Hurdle" Type="bit" />
+          <Property Name="NHFlat" Type="bit" />
+          <Property Name="ClassRaw" Type="nvarchar" MaxLength="255" />
+          <Property Name="ClassProcessed" Type="int" />
+          <Property Name="Class" Type="int" />
+          <Property Name="GradeGroup" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rating" Type="nvarchar" MaxLength="50" />
+          <Property Name="Eligibility" Type="nvarchar" MaxLength="50" />
+          <Property Name="TrackDirection" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistanceYards" Type="int" />
+          <Property Name="Distance" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistanceStd" Type="nvarchar" MaxLength="50" />
+          <Property Name="Going" Type="nvarchar" MaxLength="50" />
+          <Property Name="FencesHurdles" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fences" Type="int" />
+          <Property Name="FencesOmitted" Type="int" />
+          <Property Name="PrizeMoney" Type="nvarchar" MaxLength="255" />
+          <Property Name="Prize1st" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Prize2nd" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Prize3rd" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Prize4th" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Prize5th" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Prize6th" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Runners" Type="int" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeSeconds" Type="float" />
+          <Property Name="DiffStandard" Type="float" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="NonRunners" Type="varchar" MaxLength="300" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="CurrencyUnit" Type="varchar" MaxLength="10" />
+          <Property Name="PostTemplate" Type="bit" />
+          <Property Name="NoOfRunners" Type="int" />
+          <Property Name="TotalSP" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RaceGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RaceID" Type="int" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RaceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ReportPermutations">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Criteria" Type="varchar(max)" Nullable="false" />
+          <Property Name="Races" Type="int" />
+          <Property Name="Winners" Type="int" />
+          <Property Name="Runners" Type="int" />
+          <Property Name="Qualified Winners" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Wins/Losses" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PandLTotal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PandLPercent" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Runner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HorseId" Type="int" />
+          <Property Name="RaceId" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Position" Type="int" />
+          <Property Name="Placed" Type="int" />
+          <Property Name="DidNotFinish" Type="nvarchar" MaxLength="50" />
+          <Property Name="Disqualified" Type="bit" />
+          <Property Name="Draw" Type="int" />
+          <Property Name="Distance" Type="nvarchar" MaxLength="50" />
+          <Property Name="DistBeaten" Type="float" />
+          <Property Name="Price" Type="nvarchar" MaxLength="50" />
+          <Property Name="PriceProcessed" Type="bit" />
+          <Property Name="Numerator" Type="int" />
+          <Property Name="Denominator" Type="int" />
+          <Property Name="Favourite" Type="bit" />
+          <Property Name="WeightRaw" Type="nvarchar(max)" />
+          <Property Name="WeightProcessed" Type="int" />
+          <Property Name="Weight" Type="int" />
+          <Property Name="Weight_OW" Type="int" />
+          <Property Name="Weight_OH" Type="int" />
+          <Property Name="Weight_EW" Type="int" />
+          <Property Name="Weight_Desc" Type="nvarchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="TrainerId" Type="int" />
+          <Property Name="JockeyId" Type="int" />
+          <Property Name="Allowance" Type="int" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="OR_Rating" Type="nvarchar" MaxLength="50" />
+          <Property Name="TS_Rating" Type="nvarchar" MaxLength="50" />
+          <Property Name="RPR_Rating" Type="nvarchar" MaxLength="50" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="HorseRaceSequence" Type="int" />
+          <Property Name="OwnerId" Type="int" />
+          <Property Name="PostTemplate" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RacingPostRaces.dbo.Sample' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Sample">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ScrapeBH">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="Scraped" Type="bit" />
+        </EntityType>
+        <EntityType Name="ScrapeCourse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastDateScraped" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ScrapeRace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MeetingId" Type="int" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Scraped" Type="bit" />
+          <Property Name="RaceId" Type="int" />
+          <Property Name="RaceDate" Type="datetime" />
+          <Property Name="CourseUrl" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Required" Type="bit" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RacingPostRaces.dbo.Season' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Season">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RaceType" Type="int" />
+          <Property Name="DateFrom" Type="datetime" />
+          <Property Name="DateTo" Type="datetime" />
+          <Property Name="Season" Type="int" />
+          <Property Name="SeasonType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RacingPostRaces.dbo.SummaryQuery2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SummaryQuery2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="GroupID" Type="int" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Element1" Type="varchar" MaxLength="250" />
+          <Property Name="Element" Type="varchar" MaxLength="250" />
+          <Property Name="Element3" Type="varchar" MaxLength="250" />
+          <Property Name="Element5" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="TrackType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trainer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" />
+          <Property Name="Initial" Type="varchar" MaxLength="5" />
+          <Property Name="Firstname" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="RacingPostRacesModelStoreContainer">
+          <EntitySet Name="ActiveJockeys" EntityType="Self.ActiveJockeys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActiveTrainers" EntityType="Self.ActiveTrainers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AgeOfRace" EntityType="Self.AgeOfRace" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BH_Sale" EntityType="Self.BH_Sale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassGroup" EntityType="Self.ClassGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horse" EntityType="Self.Horse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horse_Merged" EntityType="Self.Horse_Merged" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jockey" EntityType="Self.Jockey" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meeting" EntityType="Self.Meeting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PA_Course" EntityType="Self.PA_Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PA_Meeting" EntityType="Self.PA_Meeting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PA_TrackDirection" EntityType="Self.PA_TrackDirection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PP_Horse" EntityType="Self.PP_Horse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PQ_Horse" EntityType="Self.PQ_Horse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PQ_HorseTemp" EntityType="Self.PQ_HorseTemp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Race" EntityType="Self.Race" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RaceGroup" EntityType="Self.RaceGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RaceType" EntityType="Self.RaceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportPermutations" EntityType="Self.ReportPermutations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Runner" EntityType="Self.Runner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScrapeBH" EntityType="Self.ScrapeBH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScrapeCourse" EntityType="Self.ScrapeCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScrapeRace" EntityType="Self.ScrapeRace" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrackType" EntityType="Self.TrackType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trainer" EntityType="Self.Trainer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class" EntityType="Self.Class" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Class].[class] AS [class], 
+    [Class].[PreviousClass] AS [PreviousClass], 
+    [Class].[NextClass] AS [NextClass]
+    FROM [dbo].[Class] AS [Class]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Going" EntityType="Self.Going" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Going].[Id] AS [Id], 
+    [Going].[Brief] AS [Brief], 
+    [Going].[Description] AS [Description], 
+    [Going].[GroupId] AS [GroupId], 
+    [Going].[ShortBrief] AS [ShortBrief], 
+    [Going].[NextGoingGroupID] AS [NextGoingGroupID], 
+    [Going].[PrevGoingGroupID] AS [PrevGoingGroupID]
+    FROM [dbo].[Going] AS [Going]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="HorseRacingAnalysis" EntityType="Self.HorseRacingAnalysis" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HorseRacingAnalysis].[RaceID] AS [RaceID], 
+    [HorseRacingAnalysis].[MeetingId] AS [MeetingId], 
+    [HorseRacingAnalysis].[StartTime] AS [StartTime], 
+    [HorseRacingAnalysis].[RaceName] AS [RaceName], 
+    [HorseRacingAnalysis].[RaceType] AS [RaceType], 
+    [HorseRacingAnalysis].[Handicap] AS [Handicap], 
+    [HorseRacingAnalysis].[Chase] AS [Chase], 
+    [HorseRacingAnalysis].[Hurdle] AS [Hurdle], 
+    [HorseRacingAnalysis].[NHFlat] AS [NHFlat], 
+    [HorseRacingAnalysis].[Class] AS [Class], 
+    [HorseRacingAnalysis].[GradeGroup] AS [GradeGroup], 
+    [HorseRacingAnalysis].[RaceRating] AS [RaceRating], 
+    [HorseRacingAnalysis].[Eligibility] AS [Eligibility], 
+    [HorseRacingAnalysis].[TrackDirection] AS [TrackDirection], 
+    [HorseRacingAnalysis].[DistanceYards] AS [DistanceYards], 
+    [HorseRacingAnalysis].[Distance] AS [Distance], 
+    [HorseRacingAnalysis].[DistanceStd] AS [DistanceStd], 
+    [HorseRacingAnalysis].[Furlongs] AS [Furlongs], 
+    [HorseRacingAnalysis].[Going] AS [Going], 
+    [HorseRacingAnalysis].[FencesHurdles] AS [FencesHurdles], 
+    [HorseRacingAnalysis].[Fences] AS [Fences], 
+    [HorseRacingAnalysis].[FencesOmitted] AS [FencesOmitted], 
+    [HorseRacingAnalysis].[Runners] AS [Runners], 
+    [HorseRacingAnalysis].[RaceTime] AS [RaceTime], 
+    [HorseRacingAnalysis].[TimeSeconds] AS [TimeSeconds], 
+    [HorseRacingAnalysis].[CourseID] AS [CourseID], 
+    [HorseRacingAnalysis].[RunnerID] AS [RunnerID], 
+    [HorseRacingAnalysis].[HorseId] AS [HorseId], 
+    [HorseRacingAnalysis].[Position] AS [Position], 
+    [HorseRacingAnalysis].[Placed] AS [Placed], 
+    [HorseRacingAnalysis].[DidNotFinish] AS [DidNotFinish], 
+    [HorseRacingAnalysis].[Disqualified] AS [Disqualified], 
+    [HorseRacingAnalysis].[Draw] AS [Draw], 
+    [HorseRacingAnalysis].[RunnerDistance] AS [RunnerDistance], 
+    [HorseRacingAnalysis].[Price] AS [Price], 
+    [HorseRacingAnalysis].[PriceProcessed] AS [PriceProcessed], 
+    [HorseRacingAnalysis].[Numerator] AS [Numerator], 
+    [HorseRacingAnalysis].[Denominator] AS [Denominator], 
+    [HorseRacingAnalysis].[Favourite] AS [Favourite], 
+    [HorseRacingAnalysis].[WeightProcessed] AS [WeightProcessed], 
+    [HorseRacingAnalysis].[Weight] AS [Weight], 
+    [HorseRacingAnalysis].[Weight_OW] AS [Weight_OW], 
+    [HorseRacingAnalysis].[Weight_OH] AS [Weight_OH], 
+    [HorseRacingAnalysis].[Weight_EW] AS [Weight_EW], 
+    [HorseRacingAnalysis].[Weight_Desc] AS [Weight_Desc], 
+    [HorseRacingAnalysis].[TrainerId] AS [TrainerId], 
+    [HorseRacingAnalysis].[JockeyId] AS [JockeyId], 
+    [HorseRacingAnalysis].[RunnerAllowance] AS [RunnerAllowance], 
+    [HorseRacingAnalysis].[OR_Rating] AS [OR_Rating], 
+    [HorseRacingAnalysis].[TS_Rating] AS [TS_Rating], 
+    [HorseRacingAnalysis].[RPR_Rating] AS [RPR_Rating], 
+    [HorseRacingAnalysis].[rating] AS [rating], 
+    [HorseRacingAnalysis].[Age] AS [Age], 
+    [HorseRacingAnalysis].[HorseRaceSequence] AS [HorseRaceSequence], 
+    [HorseRacingAnalysis].[HorseName] AS [HorseName], 
+    [HorseRacingAnalysis].[FlatName] AS [FlatName], 
+    [HorseRacingAnalysis].[Country] AS [Country], 
+    [HorseRacingAnalysis].[FoalDate] AS [FoalDate], 
+    [HorseRacingAnalysis].[FoalYear] AS [FoalYear], 
+    [HorseRacingAnalysis].[Colour] AS [Colour], 
+    [HorseRacingAnalysis].[Sex] AS [Sex], 
+    [HorseRacingAnalysis].[GoingID] AS [GoingID], 
+    [HorseRacingAnalysis].[GoingGroupID] AS [GoingGroupID], 
+    [HorseRacingAnalysis].[NextGoingGroupID] AS [NextGoingGroupID], 
+    [HorseRacingAnalysis].[PrevGoingGroupID] AS [PrevGoingGroupID], 
+    [HorseRacingAnalysis].[RatingOfWinner] AS [RatingOfWinner], 
+    [HorseRacingAnalysis].[RatingOfLastRun] AS [RatingOfLastRun], 
+    [HorseRacingAnalysis].[RatingOfLastWin] AS [RatingOfLastWin], 
+    [HorseRacingAnalysis].[ClassPrevious] AS [ClassPrevious], 
+    [HorseRacingAnalysis].[ClassNext] AS [ClassNext], 
+    [HorseRacingAnalysis].[distancePrevious] AS [distancePrevious], 
+    [HorseRacingAnalysis].[distanceNext] AS [distanceNext], 
+    [HorseRacingAnalysis].[Maiden] AS [Maiden], 
+    [HorseRacingAnalysis].[Winner_On_Same_Type_Track] AS [Winner_On_Same_Type_Track], 
+    [HorseRacingAnalysis].[Winner_On_Track] AS [Winner_On_Track], 
+    [HorseRacingAnalysis].[Winner_Same_Distance] AS [Winner_Same_Distance], 
+    [HorseRacingAnalysis].[Winner_Same_Going] AS [Winner_Same_Going], 
+    [HorseRacingAnalysis].[Winner_Same_Class] AS [Winner_Same_Class], 
+    [HorseRacingAnalysis].[Topweight] AS [Topweight], 
+    [HorseRacingAnalysis].[2.5% of top weight] AS [2.5% of top weight], 
+    [HorseRacingAnalysis].[within 2.5% of top weight] AS [within 2.5% of top weight], 
+    [HorseRacingAnalysis].[Within 5% top weight] AS [Within 5% top weight], 
+    [HorseRacingAnalysis].[Within 5% of bottom Weight] AS [Within 5% of bottom Weight], 
+    [HorseRacingAnalysis].[within 2.5% bottom Weight] AS [within 2.5% bottom Weight], 
+    [HorseRacingAnalysis].[Bottom Weight] AS [Bottom Weight], 
+    [HorseRacingAnalysis].[PriceDecimal] AS [PriceDecimal], 
+    [HorseRacingAnalysis].[TrackTypeID] AS [TrackTypeID], 
+    [HorseRacingAnalysis].[Winner_AnyTime] AS [Winner_AnyTime], 
+    [HorseRacingAnalysis].[DateOfLastRace] AS [DateOfLastRace], 
+    [HorseRacingAnalysis].[DateOfLastWinRace] AS [DateOfLastWinRace], 
+    [HorseRacingAnalysis].[DateOfLastRaceDateDifference] AS [DateOfLastRaceDateDifference], 
+    [HorseRacingAnalysis].[DateOfLastWinRaceDateDifference] AS [DateOfLastWinRaceDateDifference], 
+    [HorseRacingAnalysis].[WinnerLastRace] AS [WinnerLastRace], 
+    [HorseRacingAnalysis].[WinnerInPrevious3Races] AS [WinnerInPrevious3Races], 
+    [HorseRacingAnalysis].[WinnerInPrevious5Races] AS [WinnerInPrevious5Races], 
+    [HorseRacingAnalysis].[Winner_Previous_Distance] AS [Winner_Previous_Distance], 
+    [HorseRacingAnalysis].[Winner_Next_Distance] AS [Winner_Next_Distance], 
+    [HorseRacingAnalysis].[Winner_Previous_Going] AS [Winner_Previous_Going], 
+    [HorseRacingAnalysis].[Winner_Next_Going] AS [Winner_Next_Going], 
+    [HorseRacingAnalysis].[Winner_Previous_Class] AS [Winner_Previous_Class], 
+    [HorseRacingAnalysis].[Winner_Next_Class] AS [Winner_Next_Class], 
+    [HorseRacingAnalysis].[OddsFavoriteValue] AS [OddsFavoriteValue], 
+    [HorseRacingAnalysis].[AnyRacewith4orlessrunners-WinneronlyPlaced] AS [AnyRacewith4orlessrunners-WinneronlyPlaced], 
+    [HorseRacingAnalysis].[AnyRacewith5,6or7runners-2placesPlaced] AS [AnyRacewith5,6or7runners-2placesPlaced], 
+    [HorseRacingAnalysis].[AnyNonHandiCapWith8orMoreRunners-3PlacesPlaced] AS [AnyNonHandiCapWith8orMoreRunners-3PlacesPlaced], 
+    [HorseRacingAnalysis].[HandicapsWith8-15Runners-3PlacesPlaced] AS [HandicapsWith8-15Runners-3PlacesPlaced], 
+    [HorseRacingAnalysis].[HandicapsWith16OrMoreRunners-4PlacesPlaced] AS [HandicapsWith16OrMoreRunners-4PlacesPlaced], 
+    [HorseRacingAnalysis].[PlacedInRace] AS [PlacedInRace], 
+    [HorseRacingAnalysis].[IsTopWeight] AS [IsTopWeight], 
+    [HorseRacingAnalysis].[IsBottomweight] AS [IsBottomweight], 
+    [HorseRacingAnalysis].[Count 2.5% of top weight] AS [Count 2.5% of top weight], 
+    [HorseRacingAnalysis].[Count 5% of top weight] AS [Count 5% of top weight], 
+    [HorseRacingAnalysis].[Count 2.5% of Bottom weight] AS [Count 2.5% of Bottom weight], 
+    [HorseRacingAnalysis].[Count 5% of Bottom weight] AS [Count 5% of Bottom weight], 
+    [HorseRacingAnalysis].[Count Other - Weight] AS [Count Other - Weight], 
+    [HorseRacingAnalysis].[Count-ImprovedRatingSinceLastRun] AS [Count-ImprovedRatingSinceLastRun], 
+    [HorseRacingAnalysis].[Count-LowerRatingSinceLastRun] AS [Count-LowerRatingSinceLastRun], 
+    [HorseRacingAnalysis].[Count-ImprovedRatingSinceLastWin] AS [Count-ImprovedRatingSinceLastWin], 
+    [HorseRacingAnalysis].[Count-LowerRatingSinceLastWin] AS [Count-LowerRatingSinceLastWin], 
+    [HorseRacingAnalysis].[Favorite] AS [Favorite], 
+    [HorseRacingAnalysis].[SecondFavoriteValue2] AS [SecondFavoriteValue2], 
+    [HorseRacingAnalysis].[Odd_Is_2nd_Favorite] AS [Odd_Is_2nd_Favorite], 
+    [HorseRacingAnalysis].[Odds On] AS [Odds On], 
+    [HorseRacingAnalysis].[Evens - 2/1] AS [Evens - 2/1], 
+    [HorseRacingAnalysis].[&gt;2/1 - 5/1] AS [&gt;2/1 - 5/1], 
+    [HorseRacingAnalysis].[&gt;5/1 - 10/1] AS [&gt;5/1 - 10/1], 
+    [HorseRacingAnalysis].[&gt;10/1 - 20/1] AS [&gt;10/1 - 20/1], 
+    [HorseRacingAnalysis].[&gt;20 / 1] AS [&gt;20 / 1], 
+    [HorseRacingAnalysis].[PlacedInPreviousRace] AS [PlacedInPreviousRace], 
+    [HorseRacingAnalysis].[PlacedInPrevious3Races] AS [PlacedInPrevious3Races], 
+    [HorseRacingAnalysis].[PlacedInPrevious5Races] AS [PlacedInPrevious5Races], 
+    [HorseRacingAnalysis].[UnPlacedInAllRaces] AS [UnPlacedInAllRaces], 
+    [HorseRacingAnalysis].[NoRunsInCareer] AS [NoRunsInCareer], 
+    [HorseRacingAnalysis].[NoRunsInSeason] AS [NoRunsInSeason], 
+    [HorseRacingAnalysis].[PP] AS [PP], 
+    [HorseRacingAnalysis].[PIR] AS [PIR], 
+    [HorseRacingAnalysis].[Winner distance +/-1-OR] AS [Winner distance +/-1-OR], 
+    [HorseRacingAnalysis].[Winner Going +/-1-And] AS [Winner Going +/-1-And], 
+    [HorseRacingAnalysis].[Winner Class +/-1-And] AS [Winner Class +/-1-And], 
+    [HorseRacingAnalysis].[HorseAge] AS [HorseAge], 
+    [HorseRacingAnalysis].[Within Last 7 Days] AS [Within Last 7 Days], 
+    [HorseRacingAnalysis].[8-14 Days] AS [8-14 Days], 
+    [HorseRacingAnalysis].[15 Days - 28 Days] AS [15 Days - 28 Days], 
+    [HorseRacingAnalysis].[1Month- 3months] AS [1Month- 3months], 
+    [HorseRacingAnalysis].[3 Months] AS [3 Months], 
+    [HorseRacingAnalysis].[Win Within Last 7 Days] AS [Win Within Last 7 Days], 
+    [HorseRacingAnalysis].[Win 8-14 Days] AS [Win 8-14 Days], 
+    [HorseRacingAnalysis].[Win 15 Days - 28 Days] AS [Win 15 Days - 28 Days], 
+    [HorseRacingAnalysis].[Win 1Month- 3months] AS [Win 1Month- 3months], 
+    [HorseRacingAnalysis].[Win 3 Months] AS [Win 3 Months], 
+    [HorseRacingAnalysis].[WinnerLastRaceaANDWinnerSameGoing] AS [WinnerLastRaceaANDWinnerSameGoing], 
+    [HorseRacingAnalysis].[WinnerLastRaceaANDWinnerSameDistance] AS [WinnerLastRaceaANDWinnerSameDistance], 
+    [HorseRacingAnalysis].[WinnerLastRaceaANDWinnerSameClass] AS [WinnerLastRaceaANDWinnerSameClass], 
+    [HorseRacingAnalysis].[WinLastRaceANDWinSameGoingAndWinSameDistance] AS [WinLastRaceANDWinSameGoingAndWinSameDistance], 
+    [HorseRacingAnalysis].[WinLastRaceAndSameGoingAndSameDistanceAndSameClass] AS [WinLastRaceAndSameGoingAndSameDistanceAndSameClass], 
+    [HorseRacingAnalysis].[WinLastRaceaANDImprovedRatingSinceLastRun] AS [WinLastRaceaANDImprovedRatingSinceLastRun], 
+    [HorseRacingAnalysis].[WinLastRaceANDImprovedRatingSinceLastRunAndSameTypeTrack] AS [WinLastRaceANDImprovedRatingSinceLastRunAndSameTypeTrack], 
+    [HorseRacingAnalysis].[WinLastRaceANDImprovedRatingSinceLastRunAndWinnerSameGoing] AS [WinLastRaceANDImprovedRatingSinceLastRunAndWinnerSameGoing], 
+    [HorseRacingAnalysis].[WinLastRaceANDTopweight] AS [WinLastRaceANDTopweight], 
+    [HorseRacingAnalysis].[Win8_14daysAndWinnerOnTrack] AS [Win8_14daysAndWinnerOnTrack], 
+    [HorseRacingAnalysis].[WinLastRaceANDFavorite] AS [WinLastRaceANDFavorite], 
+    [HorseRacingAnalysis].[WinnerSeason_Hurdle] AS [WinnerSeason_Hurdle], 
+    [HorseRacingAnalysis].[WinnerSeason_Chase] AS [WinnerSeason_Chase], 
+    [HorseRacingAnalysis].[WinnerSeason_AllWeatherFlat] AS [WinnerSeason_AllWeatherFlat], 
+    [HorseRacingAnalysis].[WinnerSeason_Flat] AS [WinnerSeason_Flat], 
+    [HorseRacingAnalysis].[WinnerSeason_Jump] AS [WinnerSeason_Jump], 
+    [HorseRacingAnalysis].[WinnerSeason_NationalHuntFlat] AS [WinnerSeason_NationalHuntFlat], 
+    [HorseRacingAnalysis].[WinnerSeason_HuntersChase] AS [WinnerSeason_HuntersChase], 
+    [HorseRacingAnalysis].[newPrice] AS [newPrice]
+    FROM [dbo].[HorseRacingAnalysis] AS [HorseRacingAnalysis]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MissedMatchesPQ" EntityType="Self.MissedMatchesPQ" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MissedMatchesPQ].[Id] AS [Id], 
+    [MissedMatchesPQ].[Name] AS [Name], 
+    [MissedMatchesPQ].[FlatName] AS [FlatName], 
+    [MissedMatchesPQ].[PQ_Country] AS [PQ_Country], 
+    [MissedMatchesPQ].[PP_Country] AS [PP_Country], 
+    [MissedMatchesPQ].[PQ_FoalYear] AS [PQ_FoalYear], 
+    [MissedMatchesPQ].[PP_FoalYear] AS [PP_FoalYear], 
+    [MissedMatchesPQ].[PQ_SireId] AS [PQ_SireId], 
+    [MissedMatchesPQ].[PP_Sire] AS [PP_Sire], 
+    [MissedMatchesPQ].[PQ_DamId] AS [PQ_DamId], 
+    [MissedMatchesPQ].[PP_Dam] AS [PP_Dam]
+    FROM [dbo].[MissedMatchesPQ] AS [MissedMatchesPQ]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PA_Address" EntityType="Self.PA_Address" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PA_Address].[Id] AS [Id], 
+    [PA_Address].[Country] AS [Country], 
+    [PA_Address].[Town] AS [Town], 
+    [PA_Address].[Street] AS [Street], 
+    [PA_Address].[Zip] AS [Zip]
+    FROM [dbo].[PA_Address] AS [PA_Address]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PA_Race" EntityType="Self.PA_Race" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PA_Race].[Id] AS [Id], 
+    [PA_Race].[Name] AS [Name], 
+    [PA_Race].[ScheduledOffTime] AS [ScheduledOffTime], 
+    [PA_Race].[ActualOffTime] AS [ActualOffTime], 
+    [PA_Race].[PenaltyFundId] AS [PenaltyFundId], 
+    [PA_Race].[AddedMoneyFundId] AS [AddedMoneyFundId], 
+    [PA_Race].[Distance] AS [Distance], 
+    [PA_Race].[Weather] AS [Weather], 
+    [PA_Race].[Handicap] AS [Handicap], 
+    [PA_Race].[Trifecta] AS [Trifecta], 
+    [PA_Race].[FeedId] AS [FeedId], 
+    [PA_Race].[RaceTypeId] AS [RaceTypeId], 
+    [PA_Race].[Class] AS [Class], 
+    [PA_Race].[MaxRunners] AS [MaxRunners], 
+    [PA_Race].[ShowCase] AS [ShowCase], 
+    [PA_Race].[Revision] AS [Revision], 
+    [PA_Race].[GoingId] AS [GoingId], 
+    [PA_Race].[Status] AS [Status], 
+    [PA_Race].[Eligibility] AS [Eligibility], 
+    [PA_Race].[LastWinnerId] AS [LastWinnerId], 
+    [PA_Race].[BetMarketId] AS [BetMarketId], 
+    [PA_Race].[Message] AS [Message], 
+    [PA_Race].[MeetingId] AS [MeetingId], 
+    [PA_Race].[WinTime] AS [WinTime], 
+    [PA_Race].[GoingDescription] AS [GoingDescription], 
+    [PA_Race].[TrackDirectionId] AS [TrackDirectionId], 
+    [PA_Race].[StandardTimeId] AS [StandardTimeId], 
+    [PA_Race].[GoingAllowance] AS [GoingAllowance], 
+    [PA_Race].[LastYearID] AS [LastYearID]
+    FROM [dbo].[PA_Race] AS [PA_Race]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sample" EntityType="Self.Sample" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Sample].[Id] AS [Id]
+    FROM [dbo].[Sample] AS [Sample]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Season" EntityType="Self.Season" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Season].[Id] AS [Id], 
+    [Season].[RaceType] AS [RaceType], 
+    [Season].[DateFrom] AS [DateFrom], 
+    [Season].[DateTo] AS [DateTo], 
+    [Season].[Season] AS [Season], 
+    [Season].[SeasonType] AS [SeasonType]
+    FROM [dbo].[Season] AS [Season]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SummaryQuery2" EntityType="Self.SummaryQuery2" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SummaryQuery2].[GroupID] AS [GroupID], 
+    [SummaryQuery2].[ID] AS [ID], 
+    [SummaryQuery2].[Element1] AS [Element1], 
+    [SummaryQuery2].[Element] AS [Element], 
+    [SummaryQuery2].[Element3] AS [Element3], 
+    [SummaryQuery2].[Element5] AS [Element5]
+    FROM [dbo].[SummaryQuery2] AS [SummaryQuery2]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RacingPostRacesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="RPCourse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Raw" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PAId" Type="Int32" />
+          <Property Name="TrackTypeID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RPHorse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RPId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FlatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FoalDate" Type="DateTime" Precision="3" />
+          <Property Name="FoalYear" Type="Int32" />
+          <Property Name="PedigreeRaw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PedigreeProcessed" Type="Int32" />
+          <Property Name="DetailRaw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DetailProcessed" Type="Int32" />
+          <Property Name="Colour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SireId" Type="Int32" />
+          <Property Name="DamId" Type="Int32" />
+          <Property Name="GroupWinner" Type="Boolean" />
+          <Property Name="StakesWinner" Type="Boolean" />
+          <Property Name="PPId" Type="Int32" />
+          <Property Name="PPMatchBasis" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PQId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PQMatchBasis" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PQOutcome" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Backfill" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Haplo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PPRaceInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PriorityProcess" Type="Boolean" Nullable="false" />
+          <Property Name="LaterProcess" Type="Boolean" Nullable="false" />
+          <Property Name="flatname1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="flatsire" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="flatdam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="belid" Type="Int32" />
+          <Property Name="PostTemplate" Type="Boolean" />
+          <Property Name="Breeder" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Jockey">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Initial" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Meeting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="DateOfMeeting" Type="DateTime" Precision="3" />
+          <Property Name="Going" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Weather" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Stalls" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RaceWithFences" Type="Boolean" />
+          <Property Name="PAId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="RPRace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="MeetingId" Type="Int32" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RaceType" Type="Int32" />
+          <Property Name="Season" Type="Int32" />
+          <Property Name="SeasonType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Handicap" Type="Boolean" />
+          <Property Name="Chase" Type="Boolean" />
+          <Property Name="Hurdle" Type="Boolean" />
+          <Property Name="NHFlat" Type="Boolean" />
+          <Property Name="ClassRaw" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ClassProcessed" Type="Int32" />
+          <Property Name="Class" Type="Int32" />
+          <Property Name="GradeGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Eligibility" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TrackDirection" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistanceYards" Type="Int32" />
+          <Property Name="Distance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistanceStd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Going" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FencesHurdles" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fences" Type="Int32" />
+          <Property Name="FencesOmitted" Type="Int32" />
+          <Property Name="PrizeMoney" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Prize1st" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Prize2nd" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Prize3rd" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Prize4th" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Prize5th" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Prize6th" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Runners" Type="Int32" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeSeconds" Type="Double" />
+          <Property Name="DiffStandard" Type="Double" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NonRunners" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="CurrencyUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PostTemplate" Type="Boolean" />
+          <Property Name="NoOfRunners" Type="Int32" />
+          <Property Name="TotalSP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RaceGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RaceID" Type="Int32" Nullable="false" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RaceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RPRunner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HorseId" Type="Int32" />
+          <Property Name="RaceId" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="Placed" Type="Int32" />
+          <Property Name="DidNotFinish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Disqualified" Type="Boolean" />
+          <Property Name="Draw" Type="Int32" />
+          <Property Name="Distance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistBeaten" Type="Double" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PriceProcessed" Type="Boolean" />
+          <Property Name="Numerator" Type="Int32" />
+          <Property Name="Denominator" Type="Int32" />
+          <Property Name="Favourite" Type="Boolean" />
+          <Property Name="WeightRaw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WeightProcessed" Type="Int32" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="Weight_OW" Type="Int32" />
+          <Property Name="Weight_OH" Type="Int32" />
+          <Property Name="Weight_EW" Type="Int32" />
+          <Property Name="Weight_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="TrainerId" Type="Int32" />
+          <Property Name="JockeyId" Type="Int32" />
+          <Property Name="Allowance" Type="Int32" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="OR_Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TS_Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RPR_Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HorseRaceSequence" Type="Int32" />
+          <Property Name="OwnerId" Type="Int32" />
+          <Property Name="PostTemplate" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ScrapeCourse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastDateScraped" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ScrapeRace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MeetingId" Type="Int32" Nullable="false" />
+          <Property Name="Link" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Scraped" Type="Boolean" />
+          <Property Name="RaceId" Type="Int32" />
+          <Property Name="RaceDate" Type="DateTime" Precision="3" />
+          <Property Name="CourseUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Required" Type="Boolean" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TrackType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trainer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Initial" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="class1" />
+          </Key>
+          <Property Name="class1" Type="Int32" Nullable="false" />
+          <Property Name="PreviousClass" Type="Int32" />
+          <Property Name="NextClass" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Going">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Brief" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="GroupId" Type="Int32" />
+          <Property Name="ShortBrief" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NextGoingGroupID" Type="Int32" />
+          <Property Name="PrevGoingGroupID" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="RacingPostRacesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RPCourses" EntityType="RacingPostRacesModel.RPCourse" />
+          <EntitySet Name="RPHorses" EntityType="RacingPostRacesModel.RPHorse" />
+          <EntitySet Name="Jockeys" EntityType="Self.Jockey" />
+          <EntitySet Name="Meetings" EntityType="Self.Meeting" />
+          <EntitySet Name="RPRaces" EntityType="RacingPostRacesModel.RPRace" />
+          <EntitySet Name="RaceGroups" EntityType="Self.RaceGroup" />
+          <EntitySet Name="RaceTypes" EntityType="Self.RaceType" />
+          <EntitySet Name="RPRunners" EntityType="RacingPostRacesModel.RPRunner" />
+          <EntitySet Name="ScrapeCourses" EntityType="Self.ScrapeCourse" />
+          <EntitySet Name="ScrapeRaces" EntityType="Self.ScrapeRace" />
+          <EntitySet Name="TrackTypes" EntityType="Self.TrackType" />
+          <EntitySet Name="Trainers" EntityType="Self.Trainer" />
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="Goings" EntityType="Self.Going" />
+          <EntitySet Name="ActiveJockeys" EntityType="RacingPostRacesModel.ActiveJockey" />
+          <EntitySet Name="ActiveTrainers" EntityType="RacingPostRacesModel.ActiveTrainer" />
+          <EntitySet Name="AgeOfRaces" EntityType="RacingPostRacesModel.AgeOfRace" />
+          <EntitySet Name="BH_Sale" EntityType="RacingPostRacesModel.BH_Sale" />
+          <EntitySet Name="ClassGroups" EntityType="RacingPostRacesModel.ClassGroup" />
+          <EntitySet Name="Groups" EntityType="RacingPostRacesModel.Group" />
+          <EntitySet Name="Horse_Merged" EntityType="RacingPostRacesModel.Horse_Merged" />
+          <EntitySet Name="PA_Course" EntityType="RacingPostRacesModel.PA_Course" />
+          <EntitySet Name="PA_Meeting" EntityType="RacingPostRacesModel.PA_Meeting" />
+          <EntitySet Name="PA_TrackDirection" EntityType="RacingPostRacesModel.PA_TrackDirection" />
+          <EntitySet Name="PP_Horse" EntityType="RacingPostRacesModel.PP_Horse" />
+          <EntitySet Name="PQ_Horse" EntityType="RacingPostRacesModel.PQ_Horse" />
+          <EntitySet Name="PQ_HorseTemp" EntityType="RacingPostRacesModel.PQ_HorseTemp" />
+          <EntitySet Name="ReportPermutations" EntityType="RacingPostRacesModel.ReportPermutation" />
+          <EntitySet Name="ScrapeBHs" EntityType="RacingPostRacesModel.ScrapeBH" />
+          <EntitySet Name="HorseRacingAnalysis" EntityType="RacingPostRacesModel.HorseRacingAnalysi" />
+          <EntitySet Name="MissedMatchesPQs" EntityType="RacingPostRacesModel.MissedMatchesPQ" />
+          <EntitySet Name="PA_Address" EntityType="RacingPostRacesModel.PA_Address" />
+          <EntitySet Name="PA_Race" EntityType="RacingPostRacesModel.PA_Race" />
+          <EntitySet Name="Samples" EntityType="RacingPostRacesModel.Sample" />
+          <EntitySet Name="Seasons" EntityType="RacingPostRacesModel.Season" />
+          <EntitySet Name="SummaryQuery2" EntityType="RacingPostRacesModel.SummaryQuery2" />
+        </EntityContainer>
+        <EntityType Name="ActiveJockey">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JockeyID" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="County" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ActiveTrainer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrainerID" Type="Int32" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="County" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AgeOfRace">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Age" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RaceType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BH_Sale">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SaleHipType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameSexYOB" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Pedigree" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cover" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Buyer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Consignor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Processed" Type="Int32" />
+          <Property Name="Sale" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SaleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Horse" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FoalYear" Type="Int32" />
+          <Property Name="Sire" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Dam" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DamSire" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PriceUSD" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ClassGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Class" Type="Int32" Nullable="false" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassGroup" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Horse_Merged">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RHId" Type="Int32" />
+          <Property Name="PPId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PPName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PPFlatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FoalDate" Type="DateTime" Precision="3" />
+          <Property Name="FoalYear" Type="Int32" />
+          <Property Name="Colour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SireId" Type="Int32" />
+          <Property Name="DamId" Type="Int32" />
+          <Property Name="GroupWinner" Type="Boolean" />
+          <Property Name="StakesWinner" Type="Boolean" />
+          <Property Name="Haplo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShortRaceInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MergeBasis" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PA_Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddressId" Type="Int32" />
+          <Property Name="TrackTypeId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PA_Meeting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FeedId" Type="Int32" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="DrawnAdvantage" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="AdvancedGoing" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="Weather" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PA_TrackDirection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Abbreviation" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PP_Horse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="flatname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateofbirth" Type="DateTime" Precision="3" />
+          <Property Name="familynumber" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="yearofdeath" Type="DateTime" Precision="3" />
+          <Property Name="countryoffoalingid" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="colourid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="genderid" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="shortraceinfoid" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="noofstarts" Type="Int32" />
+          <Property Name="noofwins" Type="Int32" />
+          <Property Name="noof2nds" Type="Int32" />
+          <Property Name="noof3rds" Type="Int32" />
+          <Property Name="bestbhb" Type="Int32" />
+          <Property Name="bestform" Type="Int32" />
+          <Property Name="bestts" Type="Int32" />
+          <Property Name="mtdnahaplotype" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="totalprizemoney" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="winprizemoney" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="trainerid" Type="Int32" />
+          <Property Name="ownerid" Type="Int32" />
+          <Property Name="breederid" Type="Int32" />
+          <Property Name="sireid" Type="Int32" />
+          <Property Name="damid" Type="Int32" />
+          <Property Name="comments" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="isactualdate" Type="Boolean" />
+          <Property Name="iscustom" Type="Boolean" />
+          <Property Name="lastcreatedby" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="lastcreateddate" Type="DateTime" Precision="3" />
+          <Property Name="lastmodifiedby" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="lastmodifieddate" Type="DateTime" Precision="3" />
+          <Property Name="ishypo" Type="Boolean" />
+          <Property Name="i" Type="Boolean" />
+          <Property Name="c" Type="Boolean" />
+          <Property Name="s" Type="Boolean" />
+          <Property Name="p" Type="Boolean" />
+          <Property Name="b" Type="Boolean" />
+          <Property Name="randseq" Type="Int32" />
+          <Property Name="hasraced" Type="Boolean" />
+          <Property Name="height" Type="Int32" />
+          <Property Name="heightunit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="birthweight" Type="Int32" />
+          <Property Name="birthweightunit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ispedigreecomplete" Type="Boolean" />
+          <Property Name="salesid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="twin" Type="Boolean" />
+          <Property Name="pq_starts" Type="Int32" />
+          <Property Name="pq_wins" Type="Int32" />
+          <Property Name="pq_places" Type="Int32" />
+          <Property Name="pq_earnings" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pq_owner" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pq_breeder" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PQ_Horse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FlatName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FoalYear" Type="Int32" />
+          <Property Name="Colour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SireId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DamId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Starts" Type="Int32" />
+          <Property Name="Wins" Type="Int32" />
+          <Property Name="Places" Type="Int32" />
+          <Property Name="Earnings" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Owner" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Breeder" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SexRescrape" Type="Boolean" />
+          <Property Name="SexRescrape1" Type="Boolean" />
+          <Property Name="MergeId" Type="Int32" />
+          <Property Name="MergeMatchBasis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PQOutcome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PQ_HorseTemp">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FlatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FoalYear" Type="Int32" />
+          <Property Name="Colour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SireId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DamId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Starts" Type="Int32" />
+          <Property Name="Wins" Type="Int32" />
+          <Property Name="Places" Type="Int32" />
+          <Property Name="Earnings" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Owner" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Breeder" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SexRescrape" Type="Boolean" />
+          <Property Name="SexRescrape1" Type="Boolean" />
+          <Property Name="MergeId" Type="Int32" />
+          <Property Name="MergeMatchBasis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PQOutcome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ReportPermutation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Criteria" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Races" Type="Int32" />
+          <Property Name="Winners" Type="Int32" />
+          <Property Name="Runners" Type="Int32" />
+          <Property Name="Qualified_Winners" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Wins_Losses" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PandLTotal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PandLPercent" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="ScrapeBH">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Scraped" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="HorseRacingAnalysi">
+          <Key>
+            <PropertyRef Name="RaceID" />
+            <PropertyRef Name="Furlongs" />
+            <PropertyRef Name="RunnerID" />
+            <PropertyRef Name="RatingOfWinner" />
+            <PropertyRef Name="RatingOfLastRun" />
+            <PropertyRef Name="RatingOfLastWin" />
+            <PropertyRef Name="ClassPrevious" />
+            <PropertyRef Name="ClassNext" />
+            <PropertyRef Name="distancePrevious" />
+            <PropertyRef Name="distanceNext" />
+            <PropertyRef Name="Maiden" />
+            <PropertyRef Name="Winner_On_Same_Type_Track" />
+            <PropertyRef Name="Winner_On_Track" />
+            <PropertyRef Name="Winner_Same_Distance" />
+            <PropertyRef Name="Winner_Same_Going" />
+            <PropertyRef Name="Winner_Same_Class" />
+            <PropertyRef Name="within_2_5__of_top_weight" />
+            <PropertyRef Name="Winner_AnyTime" />
+            <PropertyRef Name="WinnerLastRace" />
+            <PropertyRef Name="WinnerInPrevious3Races" />
+            <PropertyRef Name="WinnerInPrevious5Races" />
+            <PropertyRef Name="Winner_Previous_Distance" />
+            <PropertyRef Name="Winner_Next_Distance" />
+            <PropertyRef Name="Winner_Previous_Going" />
+            <PropertyRef Name="Winner_Next_Going" />
+            <PropertyRef Name="Winner_Previous_Class" />
+            <PropertyRef Name="Winner_Next_Class" />
+            <PropertyRef Name="OddsFavoriteValue" />
+            <PropertyRef Name="AnyRacewith4orlessrunners_WinneronlyPlaced" />
+            <PropertyRef Name="AnyRacewith5_6or7runners_2placesPlaced" />
+            <PropertyRef Name="AnyNonHandiCapWith8orMoreRunners_3PlacesPlaced" />
+            <PropertyRef Name="HandicapsWith8_15Runners_3PlacesPlaced" />
+            <PropertyRef Name="HandicapsWith16OrMoreRunners_4PlacesPlaced" />
+            <PropertyRef Name="IsTopWeight" />
+            <PropertyRef Name="IsBottomweight" />
+            <PropertyRef Name="Count_2_5__of_top_weight" />
+            <PropertyRef Name="Count_5__of_top_weight" />
+            <PropertyRef Name="Count_2_5__of_Bottom_weight" />
+            <PropertyRef Name="Count_5__of_Bottom_weight" />
+            <PropertyRef Name="Count_Other___Weight" />
+            <PropertyRef Name="Count_ImprovedRatingSinceLastRun" />
+            <PropertyRef Name="Count_LowerRatingSinceLastRun" />
+            <PropertyRef Name="Count_ImprovedRatingSinceLastWin" />
+            <PropertyRef Name="Count_LowerRatingSinceLastWin" />
+            <PropertyRef Name="Favorite" />
+            <PropertyRef Name="SecondFavoriteValue2" />
+            <PropertyRef Name="Odd_Is_2nd_Favorite" />
+            <PropertyRef Name="Odds_On" />
+            <PropertyRef Name="Evens___2_1" />
+            <PropertyRef Name="C_2_1___5_1" />
+            <PropertyRef Name="C_5_1___10_1" />
+            <PropertyRef Name="C_10_1___20_1" />
+            <PropertyRef Name="C_20___1" />
+            <PropertyRef Name="PlacedInPreviousRace" />
+            <PropertyRef Name="PlacedInPrevious3Races" />
+            <PropertyRef Name="PlacedInPrevious5Races" />
+            <PropertyRef Name="UnPlacedInAllRaces" />
+            <PropertyRef Name="NoRunsInSeason" />
+            <PropertyRef Name="Winner_distance____1_OR" />
+            <PropertyRef Name="Winner_Going____1_And" />
+            <PropertyRef Name="Winner_Class____1_And" />
+            <PropertyRef Name="Within_Last_7_Days" />
+            <PropertyRef Name="C8_14_Days" />
+            <PropertyRef Name="C15_Days___28_Days" />
+            <PropertyRef Name="C1Month__3months" />
+            <PropertyRef Name="C3_Months" />
+            <PropertyRef Name="Win_Within_Last_7_Days" />
+            <PropertyRef Name="Win_8_14_Days" />
+            <PropertyRef Name="Win_15_Days___28_Days" />
+            <PropertyRef Name="Win_1Month__3months" />
+            <PropertyRef Name="Win_3_Months" />
+            <PropertyRef Name="WinnerLastRaceaANDWinnerSameGoing" />
+            <PropertyRef Name="WinnerLastRaceaANDWinnerSameDistance" />
+            <PropertyRef Name="WinnerLastRaceaANDWinnerSameClass" />
+            <PropertyRef Name="WinLastRaceANDWinSameGoingAndWinSameDistance" />
+            <PropertyRef Name="WinLastRaceAndSameGoingAndSameDistanceAndSameClass" />
+            <PropertyRef Name="WinLastRaceaANDImprovedRatingSinceLastRun" />
+            <PropertyRef Name="WinLastRaceANDImprovedRatingSinceLastRunAndSameTypeTrack" />
+            <PropertyRef Name="WinLastRaceANDImprovedRatingSinceLastRunAndWinnerSameGoing" />
+            <PropertyRef Name="WinLastRaceANDTopweight" />
+            <PropertyRef Name="Win8_14daysAndWinnerOnTrack" />
+            <PropertyRef Name="WinLastRaceANDFavorite" />
+            <PropertyRef Name="WinnerSeason_Hurdle" />
+            <PropertyRef Name="WinnerSeason_Chase" />
+            <PropertyRef Name="WinnerSeason_AllWeatherFlat" />
+            <PropertyRef Name="WinnerSeason_Flat" />
+            <PropertyRef Name="WinnerSeason_Jump" />
+            <PropertyRef Name="WinnerSeason_NationalHuntFlat" />
+            <PropertyRef Name="WinnerSeason_HuntersChase" />
+          </Key>
+          <Property Name="RaceID" Type="Int32" Nullable="false" />
+          <Property Name="MeetingId" Type="Int32" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="RaceName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RaceType" Type="Int32" />
+          <Property Name="Handicap" Type="Boolean" />
+          <Property Name="Chase" Type="Boolean" />
+          <Property Name="Hurdle" Type="Boolean" />
+          <Property Name="NHFlat" Type="Boolean" />
+          <Property Name="Class" Type="Int32" />
+          <Property Name="GradeGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RaceRating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Eligibility" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TrackDirection" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistanceYards" Type="Int32" />
+          <Property Name="Distance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DistanceStd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Furlongs" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Going" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FencesHurdles" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fences" Type="Int32" />
+          <Property Name="FencesOmitted" Type="Int32" />
+          <Property Name="Runners" Type="Int32" />
+          <Property Name="RaceTime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeSeconds" Type="Double" />
+          <Property Name="CourseID" Type="Int32" />
+          <Property Name="RunnerID" Type="Int32" Nullable="false" />
+          <Property Name="HorseId" Type="Int32" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="Placed" Type="Int32" />
+          <Property Name="DidNotFinish" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Disqualified" Type="Boolean" />
+          <Property Name="Draw" Type="Int32" />
+          <Property Name="RunnerDistance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PriceProcessed" Type="Boolean" />
+          <Property Name="Numerator" Type="Int32" />
+          <Property Name="Denominator" Type="Int32" />
+          <Property Name="Favourite" Type="Boolean" />
+          <Property Name="WeightProcessed" Type="Int32" />
+          <Property Name="Weight" Type="Int32" />
+          <Property Name="Weight_OW" Type="Int32" />
+          <Property Name="Weight_OH" Type="Int32" />
+          <Property Name="Weight_EW" Type="Int32" />
+          <Property Name="Weight_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TrainerId" Type="Int32" />
+          <Property Name="JockeyId" Type="Int32" />
+          <Property Name="RunnerAllowance" Type="Int32" />
+          <Property Name="OR_Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TS_Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RPR_Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="rating" Type="Int32" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="HorseRaceSequence" Type="Int32" />
+          <Property Name="HorseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FlatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FoalDate" Type="DateTime" Precision="3" />
+          <Property Name="FoalYear" Type="Int32" />
+          <Property Name="Colour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GoingID" Type="Int32" />
+          <Property Name="GoingGroupID" Type="Int32" />
+          <Property Name="NextGoingGroupID" Type="Int32" />
+          <Property Name="PrevGoingGroupID" Type="Int32" />
+          <Property Name="RatingOfWinner" Type="Int32" Nullable="false" />
+          <Property Name="RatingOfLastRun" Type="Int32" Nullable="false" />
+          <Property Name="RatingOfLastWin" Type="Int32" Nullable="false" />
+          <Property Name="ClassPrevious" Type="Int32" Nullable="false" />
+          <Property Name="ClassNext" Type="Int32" Nullable="false" />
+          <Property Name="distancePrevious" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="distanceNext" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Maiden" Type="Int32" Nullable="false" />
+          <Property Name="Winner_On_Same_Type_Track" Type="Int32" Nullable="false" />
+          <Property Name="Winner_On_Track" Type="Int32" Nullable="false" />
+          <Property Name="Winner_Same_Distance" Type="Int32" Nullable="false" />
+          <Property Name="Winner_Same_Going" Type="Int32" Nullable="false" />
+          <Property Name="Winner_Same_Class" Type="Int32" Nullable="false" />
+          <Property Name="Topweight" Type="Int32" />
+          <Property Name="C2_5__of_top_weight" Type="Decimal" Precision="15" Scale="3" />
+          <Property Name="within_2_5__of_top_weight" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Within_5__top_weight" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="Within_5__of_bottom_Weight" Type="Decimal" Precision="14" Scale="2" />
+          <Property Name="within_2_5__bottom_Weight" Type="Decimal" Precision="15" Scale="3" />
+          <Property Name="Bottom_Weight" Type="Int32" />
+          <Property Name="PriceDecimal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TrackTypeID" Type="Int32" />
+          <Property Name="Winner_AnyTime" Type="Int32" Nullable="false" />
+          <Property Name="DateOfLastRace" Type="DateTime" Precision="3" />
+          <Property Name="DateOfLastWinRace" Type="DateTime" Precision="3" />
+          <Property Name="DateOfLastRaceDateDifference" Type="Int32" />
+          <Property Name="DateOfLastWinRaceDateDifference" Type="Int32" />
+          <Property Name="WinnerLastRace" Type="Int32" Nullable="false" />
+          <Property Name="WinnerInPrevious3Races" Type="Int32" Nullable="false" />
+          <Property Name="WinnerInPrevious5Races" Type="Int32" Nullable="false" />
+          <Property Name="Winner_Previous_Distance" Type="Int32" Nullable="false" />
+          <Property Name="Winner_Next_Distance" Type="Int32" Nullable="false" />
+          <Property Name="Winner_Previous_Going" Type="Int32" Nullable="false" />
+          <Property Name="Winner_Next_Going" Type="Int32" Nullable="false" />
+          <Property Name="Winner_Previous_Class" Type="Int32" Nullable="false" />
+          <Property Name="Winner_Next_Class" Type="Int32" Nullable="false" />
+          <Property Name="OddsFavoriteValue" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="AnyRacewith4orlessrunners_WinneronlyPlaced" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="AnyRacewith5_6or7runners_2placesPlaced" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="AnyNonHandiCapWith8orMoreRunners_3PlacesPlaced" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="HandicapsWith8_15Runners_3PlacesPlaced" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="HandicapsWith16OrMoreRunners_4PlacesPlaced" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="PlacedInRace" Type="Int32" />
+          <Property Name="IsTopWeight" Type="Int32" Nullable="false" />
+          <Property Name="IsBottomweight" Type="Int32" Nullable="false" />
+          <Property Name="Count_2_5__of_top_weight" Type="Int32" Nullable="false" />
+          <Property Name="Count_5__of_top_weight" Type="Int32" Nullable="false" />
+          <Property Name="Count_2_5__of_Bottom_weight" Type="Int32" Nullable="false" />
+          <Property Name="Count_5__of_Bottom_weight" Type="Int32" Nullable="false" />
+          <Property Name="Count_Other___Weight" Type="Int32" Nullable="false" />
+          <Property Name="Count_ImprovedRatingSinceLastRun" Type="Int32" Nullable="false" />
+          <Property Name="Count_LowerRatingSinceLastRun" Type="Int32" Nullable="false" />
+          <Property Name="Count_ImprovedRatingSinceLastWin" Type="Int32" Nullable="false" />
+          <Property Name="Count_LowerRatingSinceLastWin" Type="Int32" Nullable="false" />
+          <Property Name="Favorite" Type="Int32" Nullable="false" />
+          <Property Name="SecondFavoriteValue2" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Odd_Is_2nd_Favorite" Type="Int32" Nullable="false" />
+          <Property Name="Odds_On" Type="Int32" Nullable="false" />
+          <Property Name="Evens___2_1" Type="Int32" Nullable="false" />
+          <Property Name="C_2_1___5_1" Type="Int32" Nullable="false" />
+          <Property Name="C_5_1___10_1" Type="Int32" Nullable="false" />
+          <Property Name="C_10_1___20_1" Type="Int32" Nullable="false" />
+          <Property Name="C_20___1" Type="Int32" Nullable="false" />
+          <Property Name="PlacedInPreviousRace" Type="Int32" Nullable="false" />
+          <Property Name="PlacedInPrevious3Races" Type="Int32" Nullable="false" />
+          <Property Name="PlacedInPrevious5Races" Type="Int32" Nullable="false" />
+          <Property Name="UnPlacedInAllRaces" Type="Int32" Nullable="false" />
+          <Property Name="NoRunsInCareer" Type="Int32" />
+          <Property Name="NoRunsInSeason" Type="Int32" Nullable="false" />
+          <Property Name="PP" Type="Int32" />
+          <Property Name="PIR" Type="Int32" />
+          <Property Name="Winner_distance____1_OR" Type="Int32" Nullable="false" />
+          <Property Name="Winner_Going____1_And" Type="Int32" Nullable="false" />
+          <Property Name="Winner_Class____1_And" Type="Int32" Nullable="false" />
+          <Property Name="HorseAge" Type="Int32" />
+          <Property Name="Within_Last_7_Days" Type="Int32" Nullable="false" />
+          <Property Name="C8_14_Days" Type="Int32" Nullable="false" />
+          <Property Name="C15_Days___28_Days" Type="Int32" Nullable="false" />
+          <Property Name="C1Month__3months" Type="Int32" Nullable="false" />
+          <Property Name="C3_Months" Type="Int32" Nullable="false" />
+          <Property Name="Win_Within_Last_7_Days" Type="Int32" Nullable="false" />
+          <Property Name="Win_8_14_Days" Type="Int32" Nullable="false" />
+          <Property Name="Win_15_Days___28_Days" Type="Int32" Nullable="false" />
+          <Property Name="Win_1Month__3months" Type="Int32" Nullable="false" />
+          <Property Name="Win_3_Months" Type="Int32" Nullable="false" />
+          <Property Name="WinnerLastRaceaANDWinnerSameGoing" Type="Int32" Nullable="false" />
+          <Property Name="WinnerLastRaceaANDWinnerSameDistance" Type="Int32" Nullable="false" />
+          <Property Name="WinnerLastRaceaANDWinnerSameClass" Type="Int32" Nullable="false" />
+          <Property Name="WinLastRaceANDWinSameGoingAndWinSameDistance" Type="Int32" Nullable="false" />
+          <Property Name="WinLastRaceAndSameGoingAndSameDistanceAndSameClass" Type="Int32" Nullable="false" />
+          <Property Name="WinLastRaceaANDImprovedRatingSinceLastRun" Type="Int32" Nullable="false" />
+          <Property Name="WinLastRaceANDImprovedRatingSinceLastRunAndSameTypeTrack" Type="Int32" Nullable="false" />
+          <Property Name="WinLastRaceANDImprovedRatingSinceLastRunAndWinnerSameGoing" Type="Int32" Nullable="false" />
+          <Property Name="WinLastRaceANDTopweight" Type="Int32" Nullable="false" />
+          <Property Name="Win8_14daysAndWinnerOnTrack" Type="Int32" Nullable="false" />
+          <Property Name="WinLastRaceANDFavorite" Type="Int32" Nullable="false" />
+          <Property Name="WinnerSeason_Hurdle" Type="Int32" Nullable="false" />
+          <Property Name="WinnerSeason_Chase" Type="Int32" Nullable="false" />
+          <Property Name="WinnerSeason_AllWeatherFlat" Type="Int32" Nullable="false" />
+          <Property Name="WinnerSeason_Flat" Type="Int32" Nullable="false" />
+          <Property Name="WinnerSeason_Jump" Type="Int32" Nullable="false" />
+          <Property Name="WinnerSeason_NationalHuntFlat" Type="Int32" Nullable="false" />
+          <Property Name="WinnerSeason_HuntersChase" Type="Int32" Nullable="false" />
+          <Property Name="newPrice" Type="Decimal" Precision="19" Scale="2" />
+        </EntityType>
+        <EntityType Name="MissedMatchesPQ">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FlatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PQ_Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PP_Country" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="PQ_FoalYear" Type="Int32" />
+          <Property Name="PP_FoalYear" Type="Int32" />
+          <Property Name="PQ_SireId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PP_Sire" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PQ_DamId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PP_Dam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PA_Address">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Town" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Town" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Street" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Zip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PA_Race">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="ScheduledOffTime" Type="DateTime" Precision="3" />
+          <Property Name="ActualOffTime" Type="DateTime" Precision="3" />
+          <Property Name="PenaltyFundId" Type="Int32" />
+          <Property Name="AddedMoneyFundId" Type="Int32" />
+          <Property Name="Distance" Type="Int32" />
+          <Property Name="Weather" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Handicap" Type="Boolean" />
+          <Property Name="Trifecta" Type="Boolean" />
+          <Property Name="FeedId" Type="Int32" />
+          <Property Name="RaceTypeId" Type="Int32" />
+          <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MaxRunners" Type="Int32" />
+          <Property Name="ShowCase" Type="Boolean" />
+          <Property Name="Revision" Type="Int32" />
+          <Property Name="GoingId" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Eligibility" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastWinnerId" Type="Int32" />
+          <Property Name="BetMarketId" Type="Int32" />
+          <Property Name="Message" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MeetingId" Type="Int32" />
+          <Property Name="WinTime" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="GoingDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TrackDirectionId" Type="Int32" />
+          <Property Name="StandardTimeId" Type="Int32" />
+          <Property Name="GoingAllowance" Type="Decimal" Precision="18" Scale="9" />
+          <Property Name="LastYearID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Sample">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Season">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RaceType" Type="Int32" />
+          <Property Name="DateFrom" Type="DateTime" Precision="3" />
+          <Property Name="DateTo" Type="DateTime" Precision="3" />
+          <Property Name="Season1" Type="Int32" />
+          <Property Name="SeasonType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SummaryQuery2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Element1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Element" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Element3" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Element5" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RacingPostRacesModelStoreContainer" CdmEntityContainer="RacingPostRacesEntities">
+          <EntitySetMapping Name="RPCourses">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.RPCourse">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Raw" ColumnName="Raw" />
+                <ScalarProperty Name="PAId" ColumnName="PAId" />
+                <ScalarProperty Name="TrackTypeID" ColumnName="TrackTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RPHorses">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.RPHorse">
+              <MappingFragment StoreEntitySet="Horse">
+                <ScalarProperty Name="Breeder" ColumnName="Breeder" />
+                <ScalarProperty Name="PostTemplate" ColumnName="PostTemplate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RPId" ColumnName="RPId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FlatName" ColumnName="FlatName" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="FoalDate" ColumnName="FoalDate" />
+                <ScalarProperty Name="FoalYear" ColumnName="FoalYear" />
+                <ScalarProperty Name="PedigreeRaw" ColumnName="PedigreeRaw" />
+                <ScalarProperty Name="PedigreeProcessed" ColumnName="PedigreeProcessed" />
+                <ScalarProperty Name="DetailRaw" ColumnName="DetailRaw" />
+                <ScalarProperty Name="DetailProcessed" ColumnName="DetailProcessed" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="SireId" ColumnName="SireId" />
+                <ScalarProperty Name="DamId" ColumnName="DamId" />
+                <ScalarProperty Name="GroupWinner" ColumnName="GroupWinner" />
+                <ScalarProperty Name="StakesWinner" ColumnName="StakesWinner" />
+                <ScalarProperty Name="PPId" ColumnName="PPId" />
+                <ScalarProperty Name="PPMatchBasis" ColumnName="PPMatchBasis" />
+                <ScalarProperty Name="PQId" ColumnName="PQId" />
+                <ScalarProperty Name="PQMatchBasis" ColumnName="PQMatchBasis" />
+                <ScalarProperty Name="PQOutcome" ColumnName="PQOutcome" />
+                <ScalarProperty Name="Backfill" ColumnName="Backfill" />
+                <ScalarProperty Name="Haplo" ColumnName="Haplo" />
+                <ScalarProperty Name="PPRaceInfo" ColumnName="PPRaceInfo" />
+                <ScalarProperty Name="PriorityProcess" ColumnName="PriorityProcess" />
+                <ScalarProperty Name="LaterProcess" ColumnName="LaterProcess" />
+                <ScalarProperty Name="flatname1" ColumnName="flatname1" />
+                <ScalarProperty Name="flatsire" ColumnName="flatsire" />
+                <ScalarProperty Name="flatdam" ColumnName="flatdam" />
+                <ScalarProperty Name="belid" ColumnName="belid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jockeys">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.Jockey">
+              <MappingFragment StoreEntitySet="Jockey">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Initial" ColumnName="Initial" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Meetings">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.Meeting">
+              <MappingFragment StoreEntitySet="Meeting">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="DateOfMeeting" ColumnName="DateOfMeeting" />
+                <ScalarProperty Name="Going" ColumnName="Going" />
+                <ScalarProperty Name="Weather" ColumnName="Weather" />
+                <ScalarProperty Name="Stalls" ColumnName="Stalls" />
+                <ScalarProperty Name="RaceWithFences" ColumnName="RaceWithFences" />
+                <ScalarProperty Name="PAId" ColumnName="PAId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RPRaces">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.RPRace">
+              <MappingFragment StoreEntitySet="Race">
+                <ScalarProperty Name="TotalSP" ColumnName="TotalSP" />
+                <ScalarProperty Name="NoOfRunners" ColumnName="NoOfRunners" />
+                <ScalarProperty Name="PostTemplate" ColumnName="PostTemplate" />
+                <ScalarProperty Name="CurrencyUnit" ColumnName="CurrencyUnit" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="NonRunners" ColumnName="NonRunners" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MeetingId" ColumnName="MeetingId" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RaceType" ColumnName="RaceType" />
+                <ScalarProperty Name="Season" ColumnName="Season" />
+                <ScalarProperty Name="SeasonType" ColumnName="SeasonType" />
+                <ScalarProperty Name="Handicap" ColumnName="Handicap" />
+                <ScalarProperty Name="Chase" ColumnName="Chase" />
+                <ScalarProperty Name="Hurdle" ColumnName="Hurdle" />
+                <ScalarProperty Name="NHFlat" ColumnName="NHFlat" />
+                <ScalarProperty Name="ClassRaw" ColumnName="ClassRaw" />
+                <ScalarProperty Name="ClassProcessed" ColumnName="ClassProcessed" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="GradeGroup" ColumnName="GradeGroup" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Eligibility" ColumnName="Eligibility" />
+                <ScalarProperty Name="TrackDirection" ColumnName="TrackDirection" />
+                <ScalarProperty Name="DistanceYards" ColumnName="DistanceYards" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="DistanceStd" ColumnName="DistanceStd" />
+                <ScalarProperty Name="Going" ColumnName="Going" />
+                <ScalarProperty Name="FencesHurdles" ColumnName="FencesHurdles" />
+                <ScalarProperty Name="Fences" ColumnName="Fences" />
+                <ScalarProperty Name="FencesOmitted" ColumnName="FencesOmitted" />
+                <ScalarProperty Name="PrizeMoney" ColumnName="PrizeMoney" />
+                <ScalarProperty Name="Prize1st" ColumnName="Prize1st" />
+                <ScalarProperty Name="Prize2nd" ColumnName="Prize2nd" />
+                <ScalarProperty Name="Prize3rd" ColumnName="Prize3rd" />
+                <ScalarProperty Name="Prize4th" ColumnName="Prize4th" />
+                <ScalarProperty Name="Prize5th" ColumnName="Prize5th" />
+                <ScalarProperty Name="Prize6th" ColumnName="Prize6th" />
+                <ScalarProperty Name="Runners" ColumnName="Runners" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="TimeSeconds" ColumnName="TimeSeconds" />
+                <ScalarProperty Name="DiffStandard" ColumnName="DiffStandard" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RaceGroups">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.RaceGroup">
+              <MappingFragment StoreEntitySet="RaceGroup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RaceID" ColumnName="RaceID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RaceTypes">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.RaceType">
+              <MappingFragment StoreEntitySet="RaceType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RPRunners">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.RPRunner">
+              <MappingFragment StoreEntitySet="Runner">
+                <ScalarProperty Name="PostTemplate" ColumnName="PostTemplate" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="HorseId" ColumnName="HorseId" />
+                <ScalarProperty Name="RaceId" ColumnName="RaceId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Placed" ColumnName="Placed" />
+                <ScalarProperty Name="DidNotFinish" ColumnName="DidNotFinish" />
+                <ScalarProperty Name="Disqualified" ColumnName="Disqualified" />
+                <ScalarProperty Name="Draw" ColumnName="Draw" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="DistBeaten" ColumnName="DistBeaten" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PriceProcessed" ColumnName="PriceProcessed" />
+                <ScalarProperty Name="Numerator" ColumnName="Numerator" />
+                <ScalarProperty Name="Denominator" ColumnName="Denominator" />
+                <ScalarProperty Name="Favourite" ColumnName="Favourite" />
+                <ScalarProperty Name="WeightRaw" ColumnName="WeightRaw" />
+                <ScalarProperty Name="WeightProcessed" ColumnName="WeightProcessed" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Weight_OW" ColumnName="Weight_OW" />
+                <ScalarProperty Name="Weight_OH" ColumnName="Weight_OH" />
+                <ScalarProperty Name="Weight_EW" ColumnName="Weight_EW" />
+                <ScalarProperty Name="Weight_Desc" ColumnName="Weight_Desc" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
+                <ScalarProperty Name="JockeyId" ColumnName="JockeyId" />
+                <ScalarProperty Name="Allowance" ColumnName="Allowance" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="OR_Rating" ColumnName="OR_Rating" />
+                <ScalarProperty Name="TS_Rating" ColumnName="TS_Rating" />
+                <ScalarProperty Name="RPR_Rating" ColumnName="RPR_Rating" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="HorseRaceSequence" ColumnName="HorseRaceSequence" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScrapeCourses">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.ScrapeCourse">
+              <MappingFragment StoreEntitySet="ScrapeCourse">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LastDateScraped" ColumnName="LastDateScraped" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScrapeRaces">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.ScrapeRace">
+              <MappingFragment StoreEntitySet="ScrapeRace">
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Required" ColumnName="Required" />
+                <ScalarProperty Name="CourseUrl" ColumnName="CourseUrl" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MeetingId" ColumnName="MeetingId" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Scraped" ColumnName="Scraped" />
+                <ScalarProperty Name="RaceId" ColumnName="RaceId" />
+                <ScalarProperty Name="RaceDate" ColumnName="RaceDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrackTypes">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.TrackType">
+              <MappingFragment StoreEntitySet="TrackType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trainers">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.Trainer">
+              <MappingFragment StoreEntitySet="Trainer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Initial" ColumnName="Initial" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="class1" ColumnName="class" />
+                <ScalarProperty Name="PreviousClass" ColumnName="PreviousClass" />
+                <ScalarProperty Name="NextClass" ColumnName="NextClass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goings">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.Going">
+              <MappingFragment StoreEntitySet="Going">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Brief" ColumnName="Brief" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="ShortBrief" ColumnName="ShortBrief" />
+                <ScalarProperty Name="NextGoingGroupID" ColumnName="NextGoingGroupID" />
+                <ScalarProperty Name="PrevGoingGroupID" ColumnName="PrevGoingGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActiveJockeys">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.ActiveJockey">
+              <MappingFragment StoreEntitySet="ActiveJockeys">
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="LicenseType" ColumnName="LicenseType" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="JockeyID" ColumnName="JockeyID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActiveTrainers">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.ActiveTrainer">
+              <MappingFragment StoreEntitySet="ActiveTrainers">
+                <ScalarProperty Name="LicenseType" ColumnName="LicenseType" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="TrainerID" ColumnName="TrainerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AgeOfRaces">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.AgeOfRace">
+              <MappingFragment StoreEntitySet="AgeOfRace">
+                <ScalarProperty Name="RaceType" ColumnName="RaceType" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BH_Sale">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.BH_Sale">
+              <MappingFragment StoreEntitySet="BH_Sale">
+                <ScalarProperty Name="PriceUSD" ColumnName="PriceUSD" />
+                <ScalarProperty Name="DamSire" ColumnName="DamSire" />
+                <ScalarProperty Name="Dam" ColumnName="Dam" />
+                <ScalarProperty Name="Sire" ColumnName="Sire" />
+                <ScalarProperty Name="FoalYear" ColumnName="FoalYear" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Horse" ColumnName="Horse" />
+                <ScalarProperty Name="SaleType" ColumnName="SaleType" />
+                <ScalarProperty Name="Hip" ColumnName="Hip" />
+                <ScalarProperty Name="Sale" ColumnName="Sale" />
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Consignor" ColumnName="Consignor" />
+                <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+                <ScalarProperty Name="Pedigree" ColumnName="Pedigree" />
+                <ScalarProperty Name="NameSexYOB" ColumnName="NameSexYOB" />
+                <ScalarProperty Name="SaleHipType" ColumnName="SaleHipType" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassGroups">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.ClassGroup">
+              <MappingFragment StoreEntitySet="ClassGroup">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="ClassGroup" ColumnName="ClassGroup" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Horse_Merged">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.Horse_Merged">
+              <MappingFragment StoreEntitySet="Horse_Merged">
+                <ScalarProperty Name="MergeBasis" ColumnName="MergeBasis" />
+                <ScalarProperty Name="ShortRaceInfo" ColumnName="ShortRaceInfo" />
+                <ScalarProperty Name="Haplo" ColumnName="Haplo" />
+                <ScalarProperty Name="StakesWinner" ColumnName="StakesWinner" />
+                <ScalarProperty Name="GroupWinner" ColumnName="GroupWinner" />
+                <ScalarProperty Name="DamId" ColumnName="DamId" />
+                <ScalarProperty Name="SireId" ColumnName="SireId" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="FoalYear" ColumnName="FoalYear" />
+                <ScalarProperty Name="FoalDate" ColumnName="FoalDate" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PPFlatName" ColumnName="PPFlatName" />
+                <ScalarProperty Name="PPName" ColumnName="PPName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PPId" ColumnName="PPId" />
+                <ScalarProperty Name="RHId" ColumnName="RHId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PA_Course">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.PA_Course">
+              <MappingFragment StoreEntitySet="PA_Course">
+                <ScalarProperty Name="TrackTypeId" ColumnName="TrackTypeId" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PA_Meeting">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.PA_Meeting">
+              <MappingFragment StoreEntitySet="PA_Meeting">
+                <ScalarProperty Name="Weather" ColumnName="Weather" />
+                <ScalarProperty Name="AdvancedGoing" ColumnName="AdvancedGoing" />
+                <ScalarProperty Name="DrawnAdvantage" ColumnName="DrawnAdvantage" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="FeedId" ColumnName="FeedId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PA_TrackDirection">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.PA_TrackDirection">
+              <MappingFragment StoreEntitySet="PA_TrackDirection">
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PP_Horse">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.PP_Horse">
+              <MappingFragment StoreEntitySet="PP_Horse">
+                <ScalarProperty Name="pq_breeder" ColumnName="pq_breeder" />
+                <ScalarProperty Name="pq_owner" ColumnName="pq_owner" />
+                <ScalarProperty Name="pq_earnings" ColumnName="pq_earnings" />
+                <ScalarProperty Name="pq_places" ColumnName="pq_places" />
+                <ScalarProperty Name="pq_wins" ColumnName="pq_wins" />
+                <ScalarProperty Name="pq_starts" ColumnName="pq_starts" />
+                <ScalarProperty Name="twin" ColumnName="twin" />
+                <ScalarProperty Name="salesid" ColumnName="salesid" />
+                <ScalarProperty Name="ispedigreecomplete" ColumnName="ispedigreecomplete" />
+                <ScalarProperty Name="birthweightunit" ColumnName="birthweightunit" />
+                <ScalarProperty Name="birthweight" ColumnName="birthweight" />
+                <ScalarProperty Name="heightunit" ColumnName="heightunit" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="hasraced" ColumnName="hasraced" />
+                <ScalarProperty Name="randseq" ColumnName="randseq" />
+                <ScalarProperty Name="b" ColumnName="b" />
+                <ScalarProperty Name="p" ColumnName="p" />
+                <ScalarProperty Name="s" ColumnName="s" />
+                <ScalarProperty Name="c" ColumnName="c" />
+                <ScalarProperty Name="i" ColumnName="i" />
+                <ScalarProperty Name="ishypo" ColumnName="ishypo" />
+                <ScalarProperty Name="lastmodifieddate" ColumnName="lastmodifieddate" />
+                <ScalarProperty Name="lastmodifiedby" ColumnName="lastmodifiedby" />
+                <ScalarProperty Name="lastcreateddate" ColumnName="lastcreateddate" />
+                <ScalarProperty Name="lastcreatedby" ColumnName="lastcreatedby" />
+                <ScalarProperty Name="iscustom" ColumnName="iscustom" />
+                <ScalarProperty Name="isactualdate" ColumnName="isactualdate" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="damid" ColumnName="damid" />
+                <ScalarProperty Name="sireid" ColumnName="sireid" />
+                <ScalarProperty Name="breederid" ColumnName="breederid" />
+                <ScalarProperty Name="ownerid" ColumnName="ownerid" />
+                <ScalarProperty Name="trainerid" ColumnName="trainerid" />
+                <ScalarProperty Name="winprizemoney" ColumnName="winprizemoney" />
+                <ScalarProperty Name="totalprizemoney" ColumnName="totalprizemoney" />
+                <ScalarProperty Name="mtdnahaplotype" ColumnName="mtdnahaplotype" />
+                <ScalarProperty Name="bestts" ColumnName="bestts" />
+                <ScalarProperty Name="bestform" ColumnName="bestform" />
+                <ScalarProperty Name="bestbhb" ColumnName="bestbhb" />
+                <ScalarProperty Name="noof3rds" ColumnName="noof3rds" />
+                <ScalarProperty Name="noof2nds" ColumnName="noof2nds" />
+                <ScalarProperty Name="noofwins" ColumnName="noofwins" />
+                <ScalarProperty Name="noofstarts" ColumnName="noofstarts" />
+                <ScalarProperty Name="shortraceinfoid" ColumnName="shortraceinfoid" />
+                <ScalarProperty Name="genderid" ColumnName="genderid" />
+                <ScalarProperty Name="colourid" ColumnName="colourid" />
+                <ScalarProperty Name="countryoffoalingid" ColumnName="countryoffoalingid" />
+                <ScalarProperty Name="yearofdeath" ColumnName="yearofdeath" />
+                <ScalarProperty Name="familynumber" ColumnName="familynumber" />
+                <ScalarProperty Name="dateofbirth" ColumnName="dateofbirth" />
+                <ScalarProperty Name="flatname" ColumnName="flatname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PQ_Horse">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.PQ_Horse">
+              <MappingFragment StoreEntitySet="PQ_Horse">
+                <ScalarProperty Name="PQOutcome" ColumnName="PQOutcome" />
+                <ScalarProperty Name="MergeMatchBasis" ColumnName="MergeMatchBasis" />
+                <ScalarProperty Name="MergeId" ColumnName="MergeId" />
+                <ScalarProperty Name="SexRescrape1" ColumnName="SexRescrape1" />
+                <ScalarProperty Name="SexRescrape" ColumnName="SexRescrape" />
+                <ScalarProperty Name="Breeder" ColumnName="Breeder" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="Earnings" ColumnName="Earnings" />
+                <ScalarProperty Name="Places" ColumnName="Places" />
+                <ScalarProperty Name="Wins" ColumnName="Wins" />
+                <ScalarProperty Name="Starts" ColumnName="Starts" />
+                <ScalarProperty Name="DamId" ColumnName="DamId" />
+                <ScalarProperty Name="SireId" ColumnName="SireId" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="FoalYear" ColumnName="FoalYear" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="FlatName" ColumnName="FlatName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PQ_HorseTemp">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.PQ_HorseTemp">
+              <MappingFragment StoreEntitySet="PQ_HorseTemp">
+                <ScalarProperty Name="PQOutcome" ColumnName="PQOutcome" />
+                <ScalarProperty Name="MergeMatchBasis" ColumnName="MergeMatchBasis" />
+                <ScalarProperty Name="MergeId" ColumnName="MergeId" />
+                <ScalarProperty Name="SexRescrape1" ColumnName="SexRescrape1" />
+                <ScalarProperty Name="SexRescrape" ColumnName="SexRescrape" />
+                <ScalarProperty Name="Breeder" ColumnName="Breeder" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="Earnings" ColumnName="Earnings" />
+                <ScalarProperty Name="Places" ColumnName="Places" />
+                <ScalarProperty Name="Wins" ColumnName="Wins" />
+                <ScalarProperty Name="Starts" ColumnName="Starts" />
+                <ScalarProperty Name="DamId" ColumnName="DamId" />
+                <ScalarProperty Name="SireId" ColumnName="SireId" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="FoalYear" ColumnName="FoalYear" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="FlatName" ColumnName="FlatName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportPermutations">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.ReportPermutation">
+              <MappingFragment StoreEntitySet="ReportPermutations">
+                <ScalarProperty Name="PandLPercent" ColumnName="PandLPercent" />
+                <ScalarProperty Name="PandLTotal" ColumnName="PandLTotal" />
+                <ScalarProperty Name="Wins_Losses" ColumnName="Wins/Losses" />
+                <ScalarProperty Name="Qualified_Winners" ColumnName="Qualified Winners" />
+                <ScalarProperty Name="Runners" ColumnName="Runners" />
+                <ScalarProperty Name="Winners" ColumnName="Winners" />
+                <ScalarProperty Name="Races" ColumnName="Races" />
+                <ScalarProperty Name="Criteria" ColumnName="Criteria" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScrapeBHs">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.ScrapeBH">
+              <MappingFragment StoreEntitySet="ScrapeBH">
+                <ScalarProperty Name="Scraped" ColumnName="Scraped" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HorseRacingAnalysis">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.HorseRacingAnalysi">
+              <MappingFragment StoreEntitySet="HorseRacingAnalysis">
+                <ScalarProperty Name="newPrice" ColumnName="newPrice" />
+                <ScalarProperty Name="WinnerSeason_HuntersChase" ColumnName="WinnerSeason_HuntersChase" />
+                <ScalarProperty Name="WinnerSeason_NationalHuntFlat" ColumnName="WinnerSeason_NationalHuntFlat" />
+                <ScalarProperty Name="WinnerSeason_Jump" ColumnName="WinnerSeason_Jump" />
+                <ScalarProperty Name="WinnerSeason_Flat" ColumnName="WinnerSeason_Flat" />
+                <ScalarProperty Name="WinnerSeason_AllWeatherFlat" ColumnName="WinnerSeason_AllWeatherFlat" />
+                <ScalarProperty Name="WinnerSeason_Chase" ColumnName="WinnerSeason_Chase" />
+                <ScalarProperty Name="WinnerSeason_Hurdle" ColumnName="WinnerSeason_Hurdle" />
+                <ScalarProperty Name="WinLastRaceANDFavorite" ColumnName="WinLastRaceANDFavorite" />
+                <ScalarProperty Name="Win8_14daysAndWinnerOnTrack" ColumnName="Win8_14daysAndWinnerOnTrack" />
+                <ScalarProperty Name="WinLastRaceANDTopweight" ColumnName="WinLastRaceANDTopweight" />
+                <ScalarProperty Name="WinLastRaceANDImprovedRatingSinceLastRunAndWinnerSameGoing" ColumnName="WinLastRaceANDImprovedRatingSinceLastRunAndWinnerSameGoing" />
+                <ScalarProperty Name="WinLastRaceANDImprovedRatingSinceLastRunAndSameTypeTrack" ColumnName="WinLastRaceANDImprovedRatingSinceLastRunAndSameTypeTrack" />
+                <ScalarProperty Name="WinLastRaceaANDImprovedRatingSinceLastRun" ColumnName="WinLastRaceaANDImprovedRatingSinceLastRun" />
+                <ScalarProperty Name="WinLastRaceAndSameGoingAndSameDistanceAndSameClass" ColumnName="WinLastRaceAndSameGoingAndSameDistanceAndSameClass" />
+                <ScalarProperty Name="WinLastRaceANDWinSameGoingAndWinSameDistance" ColumnName="WinLastRaceANDWinSameGoingAndWinSameDistance" />
+                <ScalarProperty Name="WinnerLastRaceaANDWinnerSameClass" ColumnName="WinnerLastRaceaANDWinnerSameClass" />
+                <ScalarProperty Name="WinnerLastRaceaANDWinnerSameDistance" ColumnName="WinnerLastRaceaANDWinnerSameDistance" />
+                <ScalarProperty Name="WinnerLastRaceaANDWinnerSameGoing" ColumnName="WinnerLastRaceaANDWinnerSameGoing" />
+                <ScalarProperty Name="Win_3_Months" ColumnName="Win 3 Months" />
+                <ScalarProperty Name="Win_1Month__3months" ColumnName="Win 1Month- 3months" />
+                <ScalarProperty Name="Win_15_Days___28_Days" ColumnName="Win 15 Days - 28 Days" />
+                <ScalarProperty Name="Win_8_14_Days" ColumnName="Win 8-14 Days" />
+                <ScalarProperty Name="Win_Within_Last_7_Days" ColumnName="Win Within Last 7 Days" />
+                <ScalarProperty Name="C3_Months" ColumnName="3 Months" />
+                <ScalarProperty Name="C1Month__3months" ColumnName="1Month- 3months" />
+                <ScalarProperty Name="C15_Days___28_Days" ColumnName="15 Days - 28 Days" />
+                <ScalarProperty Name="C8_14_Days" ColumnName="8-14 Days" />
+                <ScalarProperty Name="Within_Last_7_Days" ColumnName="Within Last 7 Days" />
+                <ScalarProperty Name="HorseAge" ColumnName="HorseAge" />
+                <ScalarProperty Name="Winner_Class____1_And" ColumnName="Winner Class +/-1-And" />
+                <ScalarProperty Name="Winner_Going____1_And" ColumnName="Winner Going +/-1-And" />
+                <ScalarProperty Name="Winner_distance____1_OR" ColumnName="Winner distance +/-1-OR" />
+                <ScalarProperty Name="PIR" ColumnName="PIR" />
+                <ScalarProperty Name="PP" ColumnName="PP" />
+                <ScalarProperty Name="NoRunsInSeason" ColumnName="NoRunsInSeason" />
+                <ScalarProperty Name="NoRunsInCareer" ColumnName="NoRunsInCareer" />
+                <ScalarProperty Name="UnPlacedInAllRaces" ColumnName="UnPlacedInAllRaces" />
+                <ScalarProperty Name="PlacedInPrevious5Races" ColumnName="PlacedInPrevious5Races" />
+                <ScalarProperty Name="PlacedInPrevious3Races" ColumnName="PlacedInPrevious3Races" />
+                <ScalarProperty Name="PlacedInPreviousRace" ColumnName="PlacedInPreviousRace" />
+                <ScalarProperty Name="C_20___1" ColumnName="&gt;20 / 1" />
+                <ScalarProperty Name="C_10_1___20_1" ColumnName="&gt;10/1 - 20/1" />
+                <ScalarProperty Name="C_5_1___10_1" ColumnName="&gt;5/1 - 10/1" />
+                <ScalarProperty Name="C_2_1___5_1" ColumnName="&gt;2/1 - 5/1" />
+                <ScalarProperty Name="Evens___2_1" ColumnName="Evens - 2/1" />
+                <ScalarProperty Name="Odds_On" ColumnName="Odds On" />
+                <ScalarProperty Name="Odd_Is_2nd_Favorite" ColumnName="Odd_Is_2nd_Favorite" />
+                <ScalarProperty Name="SecondFavoriteValue2" ColumnName="SecondFavoriteValue2" />
+                <ScalarProperty Name="Favorite" ColumnName="Favorite" />
+                <ScalarProperty Name="Count_LowerRatingSinceLastWin" ColumnName="Count-LowerRatingSinceLastWin" />
+                <ScalarProperty Name="Count_ImprovedRatingSinceLastWin" ColumnName="Count-ImprovedRatingSinceLastWin" />
+                <ScalarProperty Name="Count_LowerRatingSinceLastRun" ColumnName="Count-LowerRatingSinceLastRun" />
+                <ScalarProperty Name="Count_ImprovedRatingSinceLastRun" ColumnName="Count-ImprovedRatingSinceLastRun" />
+                <ScalarProperty Name="Count_Other___Weight" ColumnName="Count Other - Weight" />
+                <ScalarProperty Name="Count_5__of_Bottom_weight" ColumnName="Count 5% of Bottom weight" />
+                <ScalarProperty Name="Count_2_5__of_Bottom_weight" ColumnName="Count 2.5% of Bottom weight" />
+                <ScalarProperty Name="Count_5__of_top_weight" ColumnName="Count 5% of top weight" />
+                <ScalarProperty Name="Count_2_5__of_top_weight" ColumnName="Count 2.5% of top weight" />
+                <ScalarProperty Name="IsBottomweight" ColumnName="IsBottomweight" />
+                <ScalarProperty Name="IsTopWeight" ColumnName="IsTopWeight" />
+                <ScalarProperty Name="PlacedInRace" ColumnName="PlacedInRace" />
+                <ScalarProperty Name="HandicapsWith16OrMoreRunners_4PlacesPlaced" ColumnName="HandicapsWith16OrMoreRunners-4PlacesPlaced" />
+                <ScalarProperty Name="HandicapsWith8_15Runners_3PlacesPlaced" ColumnName="HandicapsWith8-15Runners-3PlacesPlaced" />
+                <ScalarProperty Name="AnyNonHandiCapWith8orMoreRunners_3PlacesPlaced" ColumnName="AnyNonHandiCapWith8orMoreRunners-3PlacesPlaced" />
+                <ScalarProperty Name="AnyRacewith5_6or7runners_2placesPlaced" ColumnName="AnyRacewith5,6or7runners-2placesPlaced" />
+                <ScalarProperty Name="AnyRacewith4orlessrunners_WinneronlyPlaced" ColumnName="AnyRacewith4orlessrunners-WinneronlyPlaced" />
+                <ScalarProperty Name="OddsFavoriteValue" ColumnName="OddsFavoriteValue" />
+                <ScalarProperty Name="Winner_Next_Class" ColumnName="Winner_Next_Class" />
+                <ScalarProperty Name="Winner_Previous_Class" ColumnName="Winner_Previous_Class" />
+                <ScalarProperty Name="Winner_Next_Going" ColumnName="Winner_Next_Going" />
+                <ScalarProperty Name="Winner_Previous_Going" ColumnName="Winner_Previous_Going" />
+                <ScalarProperty Name="Winner_Next_Distance" ColumnName="Winner_Next_Distance" />
+                <ScalarProperty Name="Winner_Previous_Distance" ColumnName="Winner_Previous_Distance" />
+                <ScalarProperty Name="WinnerInPrevious5Races" ColumnName="WinnerInPrevious5Races" />
+                <ScalarProperty Name="WinnerInPrevious3Races" ColumnName="WinnerInPrevious3Races" />
+                <ScalarProperty Name="WinnerLastRace" ColumnName="WinnerLastRace" />
+                <ScalarProperty Name="DateOfLastWinRaceDateDifference" ColumnName="DateOfLastWinRaceDateDifference" />
+                <ScalarProperty Name="DateOfLastRaceDateDifference" ColumnName="DateOfLastRaceDateDifference" />
+                <ScalarProperty Name="DateOfLastWinRace" ColumnName="DateOfLastWinRace" />
+                <ScalarProperty Name="DateOfLastRace" ColumnName="DateOfLastRace" />
+                <ScalarProperty Name="Winner_AnyTime" ColumnName="Winner_AnyTime" />
+                <ScalarProperty Name="TrackTypeID" ColumnName="TrackTypeID" />
+                <ScalarProperty Name="PriceDecimal" ColumnName="PriceDecimal" />
+                <ScalarProperty Name="Bottom_Weight" ColumnName="Bottom Weight" />
+                <ScalarProperty Name="within_2_5__bottom_Weight" ColumnName="within 2.5% bottom Weight" />
+                <ScalarProperty Name="Within_5__of_bottom_Weight" ColumnName="Within 5% of bottom Weight" />
+                <ScalarProperty Name="Within_5__top_weight" ColumnName="Within 5% top weight" />
+                <ScalarProperty Name="within_2_5__of_top_weight" ColumnName="within 2.5% of top weight" />
+                <ScalarProperty Name="C2_5__of_top_weight" ColumnName="2.5% of top weight" />
+                <ScalarProperty Name="Topweight" ColumnName="Topweight" />
+                <ScalarProperty Name="Winner_Same_Class" ColumnName="Winner_Same_Class" />
+                <ScalarProperty Name="Winner_Same_Going" ColumnName="Winner_Same_Going" />
+                <ScalarProperty Name="Winner_Same_Distance" ColumnName="Winner_Same_Distance" />
+                <ScalarProperty Name="Winner_On_Track" ColumnName="Winner_On_Track" />
+                <ScalarProperty Name="Winner_On_Same_Type_Track" ColumnName="Winner_On_Same_Type_Track" />
+                <ScalarProperty Name="Maiden" ColumnName="Maiden" />
+                <ScalarProperty Name="distanceNext" ColumnName="distanceNext" />
+                <ScalarProperty Name="distancePrevious" ColumnName="distancePrevious" />
+                <ScalarProperty Name="ClassNext" ColumnName="ClassNext" />
+                <ScalarProperty Name="ClassPrevious" ColumnName="ClassPrevious" />
+                <ScalarProperty Name="RatingOfLastWin" ColumnName="RatingOfLastWin" />
+                <ScalarProperty Name="RatingOfLastRun" ColumnName="RatingOfLastRun" />
+                <ScalarProperty Name="RatingOfWinner" ColumnName="RatingOfWinner" />
+                <ScalarProperty Name="PrevGoingGroupID" ColumnName="PrevGoingGroupID" />
+                <ScalarProperty Name="NextGoingGroupID" ColumnName="NextGoingGroupID" />
+                <ScalarProperty Name="GoingGroupID" ColumnName="GoingGroupID" />
+                <ScalarProperty Name="GoingID" ColumnName="GoingID" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="FoalYear" ColumnName="FoalYear" />
+                <ScalarProperty Name="FoalDate" ColumnName="FoalDate" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="FlatName" ColumnName="FlatName" />
+                <ScalarProperty Name="HorseName" ColumnName="HorseName" />
+                <ScalarProperty Name="HorseRaceSequence" ColumnName="HorseRaceSequence" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="RPR_Rating" ColumnName="RPR_Rating" />
+                <ScalarProperty Name="TS_Rating" ColumnName="TS_Rating" />
+                <ScalarProperty Name="OR_Rating" ColumnName="OR_Rating" />
+                <ScalarProperty Name="RunnerAllowance" ColumnName="RunnerAllowance" />
+                <ScalarProperty Name="JockeyId" ColumnName="JockeyId" />
+                <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
+                <ScalarProperty Name="Weight_Desc" ColumnName="Weight_Desc" />
+                <ScalarProperty Name="Weight_EW" ColumnName="Weight_EW" />
+                <ScalarProperty Name="Weight_OH" ColumnName="Weight_OH" />
+                <ScalarProperty Name="Weight_OW" ColumnName="Weight_OW" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="WeightProcessed" ColumnName="WeightProcessed" />
+                <ScalarProperty Name="Favourite" ColumnName="Favourite" />
+                <ScalarProperty Name="Denominator" ColumnName="Denominator" />
+                <ScalarProperty Name="Numerator" ColumnName="Numerator" />
+                <ScalarProperty Name="PriceProcessed" ColumnName="PriceProcessed" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="RunnerDistance" ColumnName="RunnerDistance" />
+                <ScalarProperty Name="Draw" ColumnName="Draw" />
+                <ScalarProperty Name="Disqualified" ColumnName="Disqualified" />
+                <ScalarProperty Name="DidNotFinish" ColumnName="DidNotFinish" />
+                <ScalarProperty Name="Placed" ColumnName="Placed" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="HorseId" ColumnName="HorseId" />
+                <ScalarProperty Name="RunnerID" ColumnName="RunnerID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="TimeSeconds" ColumnName="TimeSeconds" />
+                <ScalarProperty Name="RaceTime" ColumnName="RaceTime" />
+                <ScalarProperty Name="Runners" ColumnName="Runners" />
+                <ScalarProperty Name="FencesOmitted" ColumnName="FencesOmitted" />
+                <ScalarProperty Name="Fences" ColumnName="Fences" />
+                <ScalarProperty Name="FencesHurdles" ColumnName="FencesHurdles" />
+                <ScalarProperty Name="Going" ColumnName="Going" />
+                <ScalarProperty Name="Furlongs" ColumnName="Furlongs" />
+                <ScalarProperty Name="DistanceStd" ColumnName="DistanceStd" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="DistanceYards" ColumnName="DistanceYards" />
+                <ScalarProperty Name="TrackDirection" ColumnName="TrackDirection" />
+                <ScalarProperty Name="Eligibility" ColumnName="Eligibility" />
+                <ScalarProperty Name="RaceRating" ColumnName="RaceRating" />
+                <ScalarProperty Name="GradeGroup" ColumnName="GradeGroup" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="NHFlat" ColumnName="NHFlat" />
+                <ScalarProperty Name="Hurdle" ColumnName="Hurdle" />
+                <ScalarProperty Name="Chase" ColumnName="Chase" />
+                <ScalarProperty Name="Handicap" ColumnName="Handicap" />
+                <ScalarProperty Name="RaceType" ColumnName="RaceType" />
+                <ScalarProperty Name="RaceName" ColumnName="RaceName" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="MeetingId" ColumnName="MeetingId" />
+                <ScalarProperty Name="RaceID" ColumnName="RaceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MissedMatchesPQs">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.MissedMatchesPQ">
+              <MappingFragment StoreEntitySet="MissedMatchesPQ">
+                <ScalarProperty Name="PP_Dam" ColumnName="PP_Dam" />
+                <ScalarProperty Name="PQ_DamId" ColumnName="PQ_DamId" />
+                <ScalarProperty Name="PP_Sire" ColumnName="PP_Sire" />
+                <ScalarProperty Name="PQ_SireId" ColumnName="PQ_SireId" />
+                <ScalarProperty Name="PP_FoalYear" ColumnName="PP_FoalYear" />
+                <ScalarProperty Name="PQ_FoalYear" ColumnName="PQ_FoalYear" />
+                <ScalarProperty Name="PP_Country" ColumnName="PP_Country" />
+                <ScalarProperty Name="PQ_Country" ColumnName="PQ_Country" />
+                <ScalarProperty Name="FlatName" ColumnName="FlatName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PA_Address">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.PA_Address">
+              <MappingFragment StoreEntitySet="PA_Address">
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PA_Race">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.PA_Race">
+              <MappingFragment StoreEntitySet="PA_Race">
+                <ScalarProperty Name="LastYearID" ColumnName="LastYearID" />
+                <ScalarProperty Name="GoingAllowance" ColumnName="GoingAllowance" />
+                <ScalarProperty Name="StandardTimeId" ColumnName="StandardTimeId" />
+                <ScalarProperty Name="TrackDirectionId" ColumnName="TrackDirectionId" />
+                <ScalarProperty Name="GoingDescription" ColumnName="GoingDescription" />
+                <ScalarProperty Name="WinTime" ColumnName="WinTime" />
+                <ScalarProperty Name="MeetingId" ColumnName="MeetingId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="BetMarketId" ColumnName="BetMarketId" />
+                <ScalarProperty Name="LastWinnerId" ColumnName="LastWinnerId" />
+                <ScalarProperty Name="Eligibility" ColumnName="Eligibility" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="GoingId" ColumnName="GoingId" />
+                <ScalarProperty Name="Revision" ColumnName="Revision" />
+                <ScalarProperty Name="ShowCase" ColumnName="ShowCase" />
+                <ScalarProperty Name="MaxRunners" ColumnName="MaxRunners" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="RaceTypeId" ColumnName="RaceTypeId" />
+                <ScalarProperty Name="FeedId" ColumnName="FeedId" />
+                <ScalarProperty Name="Trifecta" ColumnName="Trifecta" />
+                <ScalarProperty Name="Handicap" ColumnName="Handicap" />
+                <ScalarProperty Name="Weather" ColumnName="Weather" />
+                <ScalarProperty Name="Distance" ColumnName="Distance" />
+                <ScalarProperty Name="AddedMoneyFundId" ColumnName="AddedMoneyFundId" />
+                <ScalarProperty Name="PenaltyFundId" ColumnName="PenaltyFundId" />
+                <ScalarProperty Name="ActualOffTime" ColumnName="ActualOffTime" />
+                <ScalarProperty Name="ScheduledOffTime" ColumnName="ScheduledOffTime" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Samples">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.Sample">
+              <MappingFragment StoreEntitySet="Sample">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seasons">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.Season">
+              <MappingFragment StoreEntitySet="Season">
+                <ScalarProperty Name="SeasonType" ColumnName="SeasonType" />
+                <ScalarProperty Name="Season1" ColumnName="Season" />
+                <ScalarProperty Name="DateTo" ColumnName="DateTo" />
+                <ScalarProperty Name="DateFrom" ColumnName="DateFrom" />
+                <ScalarProperty Name="RaceType" ColumnName="RaceType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SummaryQuery2">
+            <EntityTypeMapping TypeName="RacingPostRacesModel.SummaryQuery2">
+              <MappingFragment StoreEntitySet="SummaryQuery2">
+                <ScalarProperty Name="Element5" ColumnName="Element5" />
+                <ScalarProperty Name="Element3" ColumnName="Element3" />
+                <ScalarProperty Name="Element" ColumnName="Element" />
+                <ScalarProperty Name="Element1" ColumnName="Element1" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Bettorlogic/!svn/ver/7034/trunk/HorseRacing/RPDailyScrape/RPDailyScrape
+END
+RacingPostRaces.dbml.layout
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Bettorlogic/!svn/ver/7033/trunk/HorseRacing/RPDailyScrape/RPDailyScrape/RacingPostRaces.dbml.layout
+END
+DateScraper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Bettorlogic/!svn/ver/7048/trunk/HorseRacing/RPDailyScrape/RPDailyScrape/DateScraper.cs
+END
+RPDailyScrape.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Bettorlogic/!svn/ver/7048/trunk/HorseRacing/RPDailyScrape/RPDailyScrape/RPDailyScrape.csproj
+END
+Logger.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bettorlogic/!svn/ver/7033/trunk/HorseRacing/RPDailyScrape/RPDailyScrape/Logger.cs
+END
+RacingPostRaces.dbml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Bettorlogic/!svn/ver/7033/trunk/HorseRacing/RPDailyScrape/RPDailyScrape/RacingPostRaces.dbml
+END
+app.config
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Bettorlogic/!svn/ver/7033/trunk/HorseRacing/RPDailyScrape/RPDailyScrape/app.config
+END
+RacingPostRaces.designer.cs
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/Bettorlogic/!svn/ver/7033/trunk/HorseRacing/RPDailyScrape/RPDailyScrape/RacingPostRaces.designer.cs
+END
+Program.cs
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Bettorlogic/!svn/ver/7048/trunk/HorseRacing/RPDailyScrape/RPDailyScrape/Program.cs
+END
+Common.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Bettorlogic/!svn/ver/7048/trunk/HorseRacing/RPDailyScrape/RPDailyScrape/Common.cs
+END
+RaceScraper.cs
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Bettorlogic/!svn/ver/7048/trunk/HorseRacing/RPDailyScrape/RPDailyScrape/RaceScraper.cs
+END

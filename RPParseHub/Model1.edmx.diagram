@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cf32919c1d83479599c04c2fa0a0079a" Name="Diagram1">
+        <EntityTypeShape EntityType="RacingPostRacesModel.RPCourse" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.RPHorse" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.Jockey" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.Meeting" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.RPRace" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.RaceGroup" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.RaceType" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.RPRunner" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.ScrapeCourse" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.ScrapeRace" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.TrackType" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.Trainer" Width="1.5" PointX="6.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.Class" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.Going" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.ActiveJockey" Width="1.5" PointX="11.75" PointY="4.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.ActiveTrainer" Width="1.5" PointX="11.75" PointY="8.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.AgeOfRace" Width="1.5" PointX="5.75" PointY="12.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.BH_Sale" Width="1.5" PointX="7.75" PointY="12.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.ClassGroup" Width="1.5" PointX="9.75" PointY="12.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.Group" Width="1.5" PointX="11.75" PointY="12.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.Horse_Merged" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.PA_Course" Width="1.5" PointX="13.75" PointY="6.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.PA_Meeting" Width="1.5" PointX="13.75" PointY="9.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.PA_TrackDirection" Width="1.5" PointX="13.75" PointY="13.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.PP_Horse" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.PQ_Horse" Width="1.5" PointX="9.75" PointY="15.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.PQ_HorseTemp" Width="1.5" PointX="15.75" PointY="12.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.ReportPermutation" Width="1.5" PointX="11.75" PointY="16.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.ScrapeBH" Width="1.5" PointX="17.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.HorseRacingAnalysi" Width="1.5" PointX="0.75" PointY="17.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.MissedMatchesPQ" Width="1.5" PointX="2.75" PointY="17.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.PA_Address" Width="1.5" PointX="17.75" PointY="3.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.PA_Race" Width="1.5" PointX="4.75" PointY="17.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.Sample" Width="1.5" PointX="17.75" PointY="6.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.Season" Width="1.5" PointX="17.75" PointY="8.75" />
+        <EntityTypeShape EntityType="RacingPostRacesModel.SummaryQuery2" Width="1.5" PointX="17.75" PointY="11.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

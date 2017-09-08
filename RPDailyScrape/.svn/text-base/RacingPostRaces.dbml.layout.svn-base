@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.25, 8.875" name="RacingPostRaces">
+  <DataContextMoniker Name="/RacingPostRacesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="4daf5fd2-5797-4ef4-b958-669a39cf7b6f" absoluteBounds="0.75, 0.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/RacingPostRacesDataContext/Course" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1b548e14-d1d1-4f29-8f8e-d25b59bb85af" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="94d02e0e-a645-461d-b9ef-330cad90dc95" absoluteBounds="3, 0.75, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/RacingPostRacesDataContext/Trainer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5cebbced-d207-444a-8030-0c7e79822488" absoluteBounds="3.015, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c621f9c0-74b2-4f40-b0a1-f44f45187fd3" absoluteBounds="3, 3, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/RacingPostRacesDataContext/Jockey" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9ad18eaa-a951-4d42-a5f7-baa29b22dbd0" absoluteBounds="3.015, 3.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7dafbf75-8df7-4590-8793-82006db7248a" absoluteBounds="5.375, 0.75, 2, 7.9245426432291648">
+      <DataClassMoniker Name="/RacingPostRacesDataContext/Race" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d5364673-a410-4ca0-91ed-4cd4f32d7604" absoluteBounds="5.39, 1.21, 1.9700000000000002, 7.3645426432291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9a4bc794-3545-4d75-9b35-ca3a8a7055df" absoluteBounds="9.75, 0.75, 2, 5.6169254557291666">
+      <DataClassMoniker Name="/RacingPostRacesDataContext/Horse" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c24df997-7e1d-4b3f-961a-02f230e4abcb" absoluteBounds="9.765, 1.2100000000000009, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="14b47f07-83ef-4cdd-bd7d-650c2f671323" absoluteBounds="7.5, 0.75, 2, 7.1553369140624987">
+      <DataClassMoniker Name="/RacingPostRacesDataContext/Runner" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e5b14b32-95c4-4f34-8de2-d24427077ca3" absoluteBounds="7.5150000000000006, 1.21, 1.9700000000000002, 6.5953369140625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="50b0e301-26fd-495a-ae84-2c6be4bfc94c" absoluteBounds="12, 0.75, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/RacingPostRacesDataContext/ScrapeCourse" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3162ab0f-517e-4944-82c7-7f312c9dd155" absoluteBounds="12.015, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="12930a52-02c6-46c1-b954-08cacd77f72b" absoluteBounds="12, 2.25, 2, 1.9631982421875">
+      <DataClassMoniker Name="/RacingPostRacesDataContext/ScrapeRace" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c2d41d11-45f2-45e6-ae73-4850876bfddc" absoluteBounds="12.015, 2.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="775c93af-c975-485c-a265-c8f9e660781d" absoluteBounds="0.75, 3, 2, 1.9631982421875">
+      <DataClassMoniker Name="/RacingPostRacesDataContext/Meeting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="644e2bca-9893-4f61-a0cf-d406c9172610" absoluteBounds="0.765, 3.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="207447c5-c7e0-4745-baf1-cff452f3bd40" absoluteBounds="12, 4.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/RacingPostRacesDataContext/ScrapeRaceView" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a5243a9f-7520-4525-96b6-b8fe88187fcd" absoluteBounds="12.015, 4.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e4f5c73a-022f-4475-8da9-51e9aa59cab2" absoluteBounds="0.75, 5.25, 2, 1.9631982421875">
+      <DataClassMoniker Name="/RacingPostRacesDataContext/TrackDirection" />
+      <nestedChildShapes>
+        <elementListCompartment Id="589b98fc-b3db-4cd3-b51b-7e6382c4725e" absoluteBounds="0.765, 5.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1ef93d36-e2cd-4889-bfe9-359a2f459635" absoluteBounds="3, 5.25, 2, 1.9631982421875">
+      <DataClassMoniker Name="/RacingPostRacesDataContext/Season" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f73961f2-fae5-4cd6-b7bd-a08aff4e551b" absoluteBounds="3.015, 5.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

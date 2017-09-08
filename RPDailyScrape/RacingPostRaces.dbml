@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RacingPostRaces" Class="RacingPostRacesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=jsdell2;Initial Catalog=RacingPostRaces;Integrated Security=True" SettingsObjectName="RPDailyScrape.Properties.Settings" SettingsPropertyName="RacingPostRacesConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Course" Member="Courses">
+    <Type Name="Course">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Raw" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PAId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TrackTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Trainer" Member="Trainers">
+    <Type Name="Trainer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Initial" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Firstname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Jockey" Member="Jockeys">
+    <Type Name="Jockey">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Initial" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Firstname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Race" Member="Races">
+    <Type Name="Race">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MeetingId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="RaceType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Season" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SeasonType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Handicap" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Chase" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Hurdle" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NHFlat" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ClassRaw" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ClassProcessed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Class" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GradeGroup" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Rating" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Eligibility" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TrackDirection" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DistanceYards" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Distance" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DistanceStd" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Going" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FencesHurdles" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Fences" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FencesOmitted" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrizeMoney" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Prize1st" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Prize2nd" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Prize3rd" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Prize4th" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Prize5th" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Prize6th" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Runners" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Time" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TimeSeconds" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DiffStandard" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Meeting_Race" Member="Meeting" ThisKey="MeetingId" OtherKey="Id" Type="Meeting" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Horse" Member="Horses">
+    <Type Name="Horse">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FlatName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FoalDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FoalYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PedigreeRaw" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PedigreeProcessed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DetailRaw" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DetailProcessed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Colour" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SireId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DamId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GroupWinner" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="StakesWinner" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PPMatchBasis" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PQId" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PQMatchBasis" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PQOutcome" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Backfill" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Haplo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PPRaceInfo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PriorityProcess" Type="System.Boolean" DbType="Bit" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Runner" Member="Runners">
+    <Type Name="Runner">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HorseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RaceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Placed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DidNotFinish" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Disqualified" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Draw" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Distance" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DistBeaten" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Price" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PriceProcessed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Numerator" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Denominator" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Favourite" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="WeightRaw" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WeightProcessed" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Weight" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Weight_OW" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Weight_OH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Weight_EW" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Weight_Desc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TrainerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JockeyId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Allowance" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rating" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OR_Rating" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TS_Rating" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RPR_Rating" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="HorseRaceSequence" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ScrapeCourse" Member="ScrapeCourses">
+    <Type Name="ScrapeCourse">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LastDateScraped" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ScrapeRace" Member="ScrapeRaces">
+    <Type Name="ScrapeRace">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MeetingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Link" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="Scraped" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RaceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RaceDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Meeting" Member="Meetings">
+    <Type Name="Meeting">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateOfMeeting" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Going" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Weather" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Stalls" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Course_Meeting" Member="Course" ThisKey="CourseId" OtherKey="Id" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ScrapeRaceView" Member="ScrapeRaceViews">
+    <Type Name="ScrapeRaceView">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CourseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MeetingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Link" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="Scraped" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DateOfMeeting" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TrackTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RaceId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TrackDirection" Member="TrackDirections">
+    <Type Name="TrackDirection">
+      <Column Name="CourseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Course" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DistFrom" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DistTo" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DirectionAbbr" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Direction" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Season" Member="Seasons">
+    <Type Name="Season">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RaceType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateFrom" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateTo" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Season" Member="Season1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SeasonType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PP_Horse_Select" Member="PP_Horse_Selects">
+    <Type Name="PP_Horse_Select">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HorseName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FoalDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FoalYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Colour" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SireId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SireName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DamId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DamName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OrigName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RP_Match_By_Parents" Member="RP_Match_By_Parents">
+    <Type Name="RP_Match_By_Parent">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FoalDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FoalYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Colour" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SireId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SireName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SireFoalYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DamId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DamName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DamFoalYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PQ_Horse_Select" Member="PQ_Horse_Selects">
+    <Type Name="PQ_Horse_Select">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="FlatName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FoalYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SireId" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SireName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DamId" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DamName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Horse_Merged" Member="Horse_Mergeds">
+    <Type Name="Horse_Merged">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RHId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PPId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PPName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PPFlatName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FoalDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FoalYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Colour" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SireId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DamId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GroupWinner" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="StakesWinner" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Haplo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ShortRaceInfo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MergeBasis" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PQ_Horse" Member="PQ_Horses">
+    <Type Name="PQ_Horse">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FlatName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FoalYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Colour" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SireId" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DamId" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Starts" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Wins" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Places" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Earnings" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Owner" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Breeder" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SexRescrape" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SexRescrape1" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MergeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MergeMatchBasis" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PQOutcome" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
